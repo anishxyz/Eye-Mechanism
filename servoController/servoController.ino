@@ -139,7 +139,6 @@ void oscillate(int ms, int oscillations, int axis) {
       if (currPos == SERVOMAX || currPos == SERVOMIN) {
         phase = !phase; 
       }
-
       
       delay(ms);
       currSteps++;      
