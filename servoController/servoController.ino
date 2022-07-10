@@ -102,6 +102,52 @@ void backAndForth(int startPulse, int endPulse, int ms, int servoNum) {
     }
 }
 
+void oscillate(int ms, int oscillations, int axis) {
+    
+    //assign input to axis
+    int xServo = 0; 
+    int yServo = 1;
+
+    
+    int currPos = servoMid;
+    int currAxis = 0;
+    boolean phase = true;
+
+    //set both axes to center
+    pwm.setPWM(xServo, 0, currPos); 
+    pwm.setPWM(yServo, 0, currPos);
+
+    //establish steps that represent a single oscillation
+    int steps = (SERVOMAX - SERVOMIN) * 2;
+    int currSteps = 0;
+
+//    Possible logic if input is boolean
+//    if (input) {
+//      currAxis = xServo;
+//    } else {
+//      currAxis = yServo;
+//    }
+
+//  loop to handle updating in 1 step increments
+    while(currSteps < steps * oscillations) {
+      if (phase) {
+        pwm.setPWM(axis, 0, currPos++);
+      } else {
+        pwm.setPWM(axis, 0, currPos--);
+      }
+
+      if (currPos == SERVOMAX || currPos == SERVOMIN) {
+        phase = !phase; 
+      }
+
+      
+      delay(ms);
+      currSteps++;      
+    }
+    
+  
+}
+
 void circle(int ms, int rotations) {
     int xServo = 0; 
     int yServo = 1; 
