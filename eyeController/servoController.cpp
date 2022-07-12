@@ -28,26 +28,6 @@ int servoMid = (SERVOMAX+SERVOMIN)/2;
 uint8_t servonum = 0;
 
 
-void servoInit() {
-    Serial.begin(9600);
-
-    pwm.begin();
-    pwm.setOscillatorFrequency(27000000);
-    pwm.setPWMFreq(SERVO_FREQ);  // Analog servos run at ~50 Hz updates
-
-    //welcome screen
-//  String welcome = "Welcome to the Eye Mech!";
-//  lcd.setCursor(0, 1);
-//  lcd.print("by anish & kito");
-//  lcd.setCursor(0, 0);
-//  displayScroll(welcome);
-
-
-    //delay(10);
-    //centerAll();
-    //delay(800);
-    orbit(1, 3);
-}
 
 // You can use this function if you'd like to set the pulse length in seconds
 // e.g. setServoPulse(0, 0.001) is a ~1 millisecond pulse width. It's not precise!
@@ -177,4 +157,25 @@ void centerAll() {
         pwm.setPWM(i, 0, servoMid);
         Serial.println(servoMid);
     }
+}
+
+void servoInit() {
+    Serial.begin(9600);
+
+    pwm.begin();
+    pwm.setOscillatorFrequency(27000000);
+    pwm.setPWMFreq(SERVO_FREQ);  // Analog servos run at ~50 Hz updates
+
+    //welcome screen
+//  String welcome = "Welcome to the Eye Mech!";
+//  lcd.setCursor(0, 1);
+//  lcd.print("by anish & kito");
+//  lcd.setCursor(0, 0);
+//  displayScroll(welcome);
+
+
+    //delay(10);
+    //centerAll();
+    //delay(800);
+    //orbit(1, 3);
 }
