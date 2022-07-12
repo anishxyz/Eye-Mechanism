@@ -5,7 +5,7 @@
 #include <Adafruit_RGBLCDShield.h>
 #include <utility/Adafruit_MCP23017.h>
 #include <Adafruit_PWMServoDriver.h>
-#include "servoController.h"
+#include "buttonHandler.h"
 
 //Display Setup
 Adafruit_RGBLCDShield lcd = Adafruit_RGBLCDShield();
@@ -159,28 +159,8 @@ void orbitScreen() {
     lcd.write(byte(1));
     lcd.print(" Rotat: 5");
 
-    uint8_t buttons = lcd.readButtons();
-    boolean state = true;
-    
-    while (lcd.readButtons() || state) {
-      buttons = lcd.readButtons();
-      if (buttons & BUTTON_UP) {
-        speedScreen();
-        break;
-      }
-      if (buttons & BUTTON_DOWN) {
-        rotScreen();
-        break;
-      }
-      if (buttons & BUTTON_LEFT) {
-        //homeScreen();
-        break;
-      }
-      if (buttons & BUTTON_RIGHT) {
-        orbit(1, 2);
-        break;
-      }
-    }
+    //initButton();
+    orbitButton(lcd);
 }
 
 

@@ -6,6 +6,9 @@
 #define EYE_MECHANISM_DISPLAYCONTROLLER_H
 
 
+void speedScreen();
+
+void rotScreen();
 
 void displayInit();
 
