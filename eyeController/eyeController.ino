@@ -72,8 +72,7 @@ void setup() {
   //delay(10);   
   //centerAll(); 
   //delay(800); 
-  //circle(15); 
-  circle(1, 3);
+  orbit(1, 3);
 
   homeScreen();
 }
@@ -152,7 +151,7 @@ void oscillate(int ms, int oscillations, int axis) {
   
 }
 
-void circle(int ms, int rotations) {
+void orbit(int ms, int rotations) {
     int xServo = 0; 
     int yServo = 1; 
     
