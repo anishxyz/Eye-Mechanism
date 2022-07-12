@@ -19,7 +19,11 @@
 
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
+#include <Adafruit_RGBLCDShield.h>
+#include <utility/Adafruit_MCP23017.h>
 
+
+//Servo Setup
 // called this way, it uses the default address 0x40
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 // you can also call it with a different address you want
@@ -36,41 +40,42 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 #define USMIN  600 // This is the rounded 'minimum' microsecond length based on the minimum pulse of 150
 #define USMAX  2400 // This is the rounded 'maximum' microsecond length based on the maximum pulse of 600
 #define SERVO_FREQ 50 // Analog servos run at ~50 Hz updates
-
-
 int servoMid = (SERVOMAX+SERVOMIN)/2; 
-
 // our servo # counter
 uint8_t servonum = 0;
+
+
+//Display Setup
+Adafruit_RGBLCDShield lcd = Adafruit_RGBLCDShield();
+#define WHITE 0x7 //color constant for backlight
+
+
 
 void setup() {
   Serial.begin(9600);
 
   pwm.begin();
-  /*
-   * In theory the internal oscillator (clock) is 25MHz but it really isn't
-   * that precise. You can 'calibrate' this by tweaking this number until
-   * you get the PWM update frequency you're expecting!
-   * The int.osc. for the PCA9685 chip is a range between about 23-27MHz and
-   * is used for calculating things like writeMicroseconds()
-   * Analog servos run at ~50 Hz updates, It is importaint to use an
-   * oscilloscope in setting the int.osc frequency for the I2C PCA9685 chip.
-   * 1) Attach the oscilloscope to one of the PWM signal pins and ground on
-   *    the I2C PCA9685 chip you are setting the value for.
-   * 2) Adjust setOscillatorFrequency() until the PWM update frequency is the
-   *    expected value (50Hz for most ESCs)
-   * Setting the value here is specific to each individual I2C PCA9685 chip and
-   * affects the calculations for the PWM update frequency. 
-   * Failure to correctly set the int.osc value will cause unexpected PWM results
-   */
   pwm.setOscillatorFrequency(27000000);
   pwm.setPWMFreq(SERVO_FREQ);  // Analog servos run at ~50 Hz updates
 
-  delay(10);   
-  centerAll(); 
-  delay(800); 
+  lcd.begin(16, 2);
+  lcd.setBacklight(WHITE);
+
+  //welcome screen
+//  String welcome = "Welcome to the Eye Mech!";
+//  lcd.setCursor(0, 1);
+//  lcd.print("by anish & kito");
+//  lcd.setCursor(0, 0);
+//  displayScroll(welcome);
+  
+
+  //delay(10);   
+  //centerAll(); 
+  //delay(800); 
   //circle(15); 
   circle(1, 3);
+
+  homeScreen();
 }
 
 // You can use this function if you'd like to set the pulse length in seconds
@@ -204,17 +209,66 @@ void centerAll() {
   }
 }
 
+void displayScroll(String text) {
+  lcd.print(text);
+  delay(1000);
+  for (int i = 0; i < text.length() - 16; i++) {
+    lcd.scrollDisplayLeft();
+    delay(300);
+  }
+}
 
+void homeScreen() {
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("< Orbit");
+  lcd.setCursor(0, 1);
+  lcd.print("^ Oscillate");
+  lcd.setCursor(11, 0);
+  lcd.print("> Pos");
+}
+
+void orbitScreen() {
+  lcd.clear();
+  lcd.print("orbit!");
+}
+
+void oscScreen() {
+  lcd.clear();
+  lcd.print("oscillate!");
+}
+
+void posScreen() {
+  lcd.clear();
+  lcd.print("position!");
+}
+
+
+uint8_t i=0;
 
 void loop() {
-    int horizontalServo = 0; 
-    int verticalServo = 1; 
+  int horizontalServo = 0; 
+  int verticalServo = 1; 
+  
+  uint8_t buttons = lcd.readButtons();
 
-      //circle(5, 3);
-      //circle(1); 
-//    backAndForth(SERVOMIN, SERVOMAX, 4, horizontalServo); 
-//    backAndForth(SERVOMIN, SERVOMAX, 4, verticalServo);  
-
-    
+  if (buttons) {
+    lcd.setCursor(0,0);
+    if (buttons & BUTTON_UP) {
+      oscScreen();
+    }
+    if (buttons & BUTTON_DOWN) {
+      lcd.print("DOWN ");
+    }
+    if (buttons & BUTTON_LEFT) {
+      orbitScreen();
+    }
+    if (buttons & BUTTON_RIGHT) {
+      posScreen();
+    }
+    if (buttons & BUTTON_SELECT) {
+      lcd.print("SELECT ");
+    }
+  }
 
 }
