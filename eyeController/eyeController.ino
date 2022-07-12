@@ -7,7 +7,7 @@ void setup() {
 
   //orbit(1, 2);
   //oscillate(1, 5, 0);
-  welcome();
+  //welcome();
   homeScreen();
 }
 
