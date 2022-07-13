@@ -9,6 +9,7 @@
 #include "servoController.h"
 #include "displayController.h"
 
+int clickDelay = 150;
 
 void orbitButton(Adafruit_RGBLCDShield inp) {
     uint8_t buttons = inp.readButtons();
@@ -17,17 +18,17 @@ void orbitButton(Adafruit_RGBLCDShield inp) {
     while (inp.readButtons() || state) {
         buttons = inp.readButtons();
         if (buttons & BUTTON_UP) {
-            delay(100);
+            delay(clickDelay);
             rotSpdScreen();
             break;
         }
         if (buttons & BUTTON_DOWN) {
-            delay(100);
+            delay(clickDelay);
             rotScreen();
             break;
         }
         if (buttons & BUTTON_LEFT) {
-            delay(100);
+            delay(clickDelay);
             homeScreen();
             break;
         }
@@ -48,14 +49,17 @@ void homeButton(Adafruit_RGBLCDShield inp) {
     while (inp.readButtons() || state) {
         buttons = inp.readButtons();
         if (buttons & BUTTON_UP) {
+            delay(clickDelay);
             orbitScreen();
             break;
         }
         if (buttons & BUTTON_DOWN) {
+            delay(clickDelay);
             oscScreen();
             break;
         }
         if (buttons & BUTTON_RIGHT) {
+            delay(clickDelay);
             posScreen();
             break;
         }
@@ -81,6 +85,7 @@ void rotButton(Adafruit_RGBLCDShield inp) {
             break;
         }
         if (buttons & BUTTON_LEFT) {
+            delay(clickDelay);
             orbitScreen();
             break;
         }
@@ -102,23 +107,24 @@ void rotSpdButton(Adafruit_RGBLCDShield inp) {
         buttons = inp.readButtons();
         if (buttons & BUTTON_UP) {
             setRotSpd(5);
-            delay(10);
+            delay(clickDelay);
             orbitScreen();
             break;
         }
         if (buttons & BUTTON_DOWN) {
             setRotSpd(3);
-            delay(10);
+            delay(clickDelay);
             orbitScreen();
             break;
         }
         if (buttons & BUTTON_LEFT) {
+            delay(clickDelay);
             orbitScreen();
             break;
         }
         if (buttons & BUTTON_RIGHT) {
             setRotSpd(1);
-            delay(10);
+            delay(clickDelay);
             orbitScreen();
             break;
         }
