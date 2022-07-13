@@ -29,24 +29,174 @@ int servoMid = (SERVOMAX+SERVOMIN)/2;
 uint8_t servonum = 0;
 
 
+void servoInit() {
+    Serial.begin(9600);
+
+    pwm.begin();
+    pwm.setOscillatorFrequency(27000000);
+    pwm.setPWMFreq(SERVO_FREQ);  // Analog servos run at ~50 Hz updates
+}
 
 // You can use this function if you'd like to set the pulse length in seconds
 // e.g. setServoPulse(0, 0.001) is a ~1 millisecond pulse width. It's not precise!
 void setServoPulse(uint8_t n, double pulse) {
-
     double pulselength;
 
     pulselength = 1000000;   // 1,000,000 us per second
     pulselength /= SERVO_FREQ;   // Analog servos run at ~60 Hz updates
-    Serial.print(pulselength); Serial.println(" us per period");
+    //Serial.print(pulselength); Serial.println(" us per period");
     pulselength /= 4096;  // 12 bits of resolution
-    Serial.print(pulselength); Serial.println(" us per bit");
+    //Serial.print(pulselength); Serial.println(" us per bit");
     pulse *= 1000000;  // convert input seconds to us
     pulse /= pulselength;
-    Serial.println(pulse);
+    //Serial.println(pulse);
     pwm.setPWM(n, 0, pulse);
 }
 
+void centerAll() {
+    //iterates through 6 servos and positions them at their midpoint
+    for(int i = 0; i < 6; i++) {
+        pwm.setPWM(i, 0, servoMid);
+        Serial.println(servoMid);
+    }
+}
+
+void orbit(int ms, int rotations) {
+    // assign servo to axes
+    int xServo = 0;
+    int yServo = 1;
+
+    //set eye position to middle top
+    pwm.setPWM(xServo, 0, servoMid);
+    pwm.setPWM(yServo, 0, SERVOMAX);
+    int currX = servoMid;
+    int currY = SERVOMAX;
+
+    //phase controls increase/decrease of steps
+    //true: increasing
+    //false: decreasing
+    boolean phaseX = true;
+    boolean phaseY = false;
+
+    //calculate number of steps per rotation
+    int steps = (SERVOMAX - SERVOMIN) * 2;
+
+    //number of steps complete
+    int currSteps = 0;
+
+    //number of rotations completed
+    int currRot = 0;
+
+    //initialize screen to display orbit status
+    initOrbitRuntime();
+
+    // loop to keep adjusting position in steps until appropriate
+    // number of steps for given rotations is complete
+    while(currSteps < steps * rotations) {
+
+        //increase/decrease x axis in step
+        if (phaseX) {
+            pwm.setPWM(xServo, 0, currX++);
+        } else {
+            pwm.setPWM(xServo, 0, currX--);
+        }
+
+        //increase/decrease y axis in step
+        if (phaseY) {
+            pwm.setPWM(yServo, 0, currY++);
+        } else {
+            pwm.setPWM(yServo, 0, currY--);
+        }
+
+        //swaps direction when x axis limit hit
+        if (currX == SERVOMAX || currX == SERVOMIN) {
+            phaseX = !phaseX;
+        }
+
+        //swaps direction when y axis limit hit
+        if (currY == SERVOMAX || currY == SERVOMIN) {
+            phaseY = !phaseY;
+        }
+
+        //used to update display for curr rotation number
+        if (currSteps % steps == 0) {
+            currRot = currSteps / steps;
+            updateOrbitRuntime(currRot);
+        }
+
+        // used to detect button click to auto halt
+        // checks ever 350 steps to reduce load
+        // allows for 'hold-until-halt'
+        if (currSteps % 350 == 0) {
+            if (checkHalt()) {
+                centerAll();
+                break;
+            }
+        }
+
+        //increment current step count
+        currSteps++;
+
+        //delay to maintain input speed
+        delay(ms);
+    }
+}
+
+void oscillate(int ms, int oscillations, boolean input) {
+
+    // assign servo to axes
+    int xServo = 0;
+    int yServo = 1;
+
+    //select axis based on boolean input
+    int axis = 0;
+    if (input) {
+        axis = xServo;
+    } else {
+        axis = yServo;
+    }
+
+    //current position of axis to be controlled
+    int currPos = servoMid;
+
+    //control if axis increasing/decreasing
+    boolean phase = true;
+
+    //set both axes to center
+    pwm.setPWM(xServo, 0, currPos);
+    pwm.setPWM(yServo, 0, currPos);
+
+    //establish steps that represent a single oscillation
+    int steps = (SERVOMAX - SERVOMIN) * 2;
+
+    //number of steps complete
+    int currSteps = 0;
+
+    // loop to keep adjusting position in steps until appropriate
+    // number of steps for given oscillations is complete
+    while(currSteps < steps * oscillations) {
+
+        //increase/decrease axis in step
+        if (phase) {
+            pwm.setPWM(axis, 0, currPos++);
+        } else {
+            pwm.setPWM(axis, 0, currPos--);
+        }
+
+        //swaps direction when axis limit hit
+        if (currPos == SERVOMAX || currPos == SERVOMIN) {
+            phase = !phase;
+        }
+
+        //increment current step count
+        currSteps++;
+
+        //delay to maintain input speed
+        delay(ms);
+    }
+
+
+}
 
 void backAndForth(int startPulse, int endPulse, int ms, int servoNum) {
     for(int curr = startPulse; curr < endPulse; curr++) {
@@ -60,133 +210,4 @@ void backAndForth(int startPulse, int endPulse, int ms, int servoNum) {
     }
 }
 
-void oscillate(int ms, int oscillations, int axis) {
 
-    //assign input to axis
-    int xServo = 0;
-    int yServo = 1;
-
-
-    int currPos = servoMid;
-    int currAxis = 0;
-    boolean phase = true;
-
-    //set both axes to center
-    pwm.setPWM(xServo, 0, currPos);
-    pwm.setPWM(yServo, 0, currPos);
-
-    //establish steps that represent a single oscillation
-    int steps = (SERVOMAX - SERVOMIN) * 2;
-    int currSteps = 0;
-
-//    Possible logic if input is boolean
-//    if (input) {
-//      currAxis = xServo;
-//    } else {
-//      currAxis = yServo;
-//    }
-
-//  loop to handle updating in 1 step increments
-    while(currSteps < steps * oscillations) {
-        if (phase) {
-            pwm.setPWM(axis, 0, currPos++);
-        } else {
-            pwm.setPWM(axis, 0, currPos--);
-        }
-
-        if (currPos == SERVOMAX || currPos == SERVOMIN) {
-            phase = !phase;
-        }
-
-        delay(ms);
-        currSteps++;
-    }
-
-
-}
-
-
-void centerAll() {
-    for(int i = 0; i < 6; i++) {
-        pwm.setPWM(i, 0, servoMid);
-        Serial.println(servoMid);
-    }
-}
-
-
-void orbit(int ms, int rotations) {
-    int xServo = 0;
-    int yServo = 1;
-
-    pwm.setPWM(xServo, 0, servoMid);
-    pwm.setPWM(yServo, 0, SERVOMAX);
-
-    int currX = servoMid;
-    int currY = SERVOMAX;
-
-    int trying = pwm.getPWM(xServo);
-
-    boolean phaseX = true;
-    boolean phaseY = false;
-
-    int steps = (SERVOMAX - SERVOMIN) * 2;
-    int currSteps = 0;
-    int currRot = 0;
-
-    initOrbitRuntime();
-
-    while(currSteps < steps * rotations) {
-        if (phaseX) {
-            pwm.setPWM(xServo, 0, currX++);
-        }
-
-        if (phaseY) {
-            pwm.setPWM(yServo, 0, currY++);
-        }
-
-        if (!phaseX) {
-            pwm.setPWM(xServo, 0, currX--);
-        }
-
-        if (!phaseY) {
-            pwm.setPWM(yServo, 0, currY--);
-        }
-
-        if (currX == SERVOMAX || currX == SERVOMIN) {
-            phaseX = !phaseX;
-        }
-
-        if (currY == SERVOMAX || currY == SERVOMIN) {
-            phaseY = !phaseY;
-        }
-
-        //ISSUE: noticeable stutter when reaching each rotation
-        //used to update display for curr rotation
-        if (currSteps % steps == 0) {
-            currRot = currSteps / steps;
-            updateOrbitRuntime(currRot);
-        }
-
-        //ISSUE: top-speed bottleneck right now :(
-        //used to detect button click to auto halt
-        if (currSteps % 350 == 0) {
-            if (checkHalt()) {
-                centerAll();
-                break;
-            }
-        }
-
-        currSteps++;
-        delay(ms);
-
-    }
-}
-
-void servoInit() {
-    Serial.begin(9600);
-
-    pwm.begin();
-    pwm.setOscillatorFrequency(27000000);
-    pwm.setPWMFreq(SERVO_FREQ);  // Analog servos run at ~50 Hz updates
-
-}

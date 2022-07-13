@@ -6,13 +6,12 @@ void setup() {
   displayInit();
 
   //orbit(1, 2);
-  //oscillate(1, 5, 0);
+  //oscillate(1, 5, true);
   //welcome();
   homeScreen();
 }
 
 
 void loop() {
-
 
 }
