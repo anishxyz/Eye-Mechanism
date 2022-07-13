@@ -4,6 +4,7 @@
 
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
+#include "displayController.h"
 
 
 //Servo Setup
@@ -45,6 +46,7 @@ void setServoPulse(uint8_t n, double pulse) {
     Serial.println(pulse);
     pwm.setPWM(n, 0, pulse);
 }
+
 
 void backAndForth(int startPulse, int endPulse, int ms, int servoNum) {
     for(int curr = startPulse; curr < endPulse; curr++) {
@@ -103,6 +105,15 @@ void oscillate(int ms, int oscillations, int axis) {
 
 }
 
+
+void centerAll() {
+    for(int i = 0; i < 6; i++) {
+        pwm.setPWM(i, 0, servoMid);
+        Serial.println(servoMid);
+    }
+}
+
+
 void orbit(int ms, int rotations) {
     int xServo = 0;
     int yServo = 1;
@@ -120,6 +131,9 @@ void orbit(int ms, int rotations) {
 
     int steps = (SERVOMAX - SERVOMIN) * 2;
     int currSteps = 0;
+    int currRot = 0;
+
+    initOrbitRuntime();
 
     while(currSteps < steps * rotations) {
         if (phaseX) {
@@ -146,16 +160,25 @@ void orbit(int ms, int rotations) {
             phaseY = !phaseY;
         }
 
+        //ISSUE: noticeable stutter when reaching each rotation
+        //used to update display for curr rotation
+        if (currSteps % steps == 0) {
+            currRot = currSteps / steps;
+            updateOrbitRuntime(currRot);
+        }
+
+        //ISSUE: top-speed bottleneck right now :(
+        //used to detect button click to auto halt
+        if (currSteps % 350 == 0) {
+            if (checkHalt()) {
+                centerAll();
+                break;
+            }
+        }
+
         currSteps++;
         delay(ms);
-    }
-}
 
-
-void centerAll() {
-    for(int i = 0; i < 6; i++) {
-        pwm.setPWM(i, 0, servoMid);
-        Serial.println(servoMid);
     }
 }
 
@@ -166,16 +189,4 @@ void servoInit() {
     pwm.setOscillatorFrequency(27000000);
     pwm.setPWMFreq(SERVO_FREQ);  // Analog servos run at ~50 Hz updates
 
-    //welcome screen
-//  String welcome = "Welcome to the Eye Mech!";
-//  lcd.setCursor(0, 1);
-//  lcd.print("by anish & kito");
-//  lcd.setCursor(0, 0);
-//  displayScroll(welcome);
-
-
-    //delay(10);
-    //centerAll();
-    //delay(800);
-    //orbit(1, 3);
 }

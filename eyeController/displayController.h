@@ -6,11 +6,29 @@
 #define EYE_MECHANISM_DISPLAYCONTROLLER_H
 
 
-void speedScreen();
+void rotSpdScreen();
+
+void backAndLines();
 
 void rotScreen();
 
+void setRotSpd (int ms);
+
+void incrRot(int inp);
+
+int getRot();
+
+int getRotSpd();
+
+void updateOrbitRuntime(int r);
+
+void initOrbitRuntime();
+
+boolean checkHalt();
+
 void displayInit();
+
+void resetScreen();
 
 void displayScroll(String text);
 
