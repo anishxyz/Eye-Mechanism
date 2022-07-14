@@ -285,7 +285,10 @@ void posButton(Adafruit_RGBLCDShield inp) {
             break;
         }
         if (buttons & BUTTON_RIGHT) {
-
+            delay(clickDelay);
+            setPosition(getStep(true), true);
+            setPosition(getStep(false), false);
+            posScreen();
             break;
         }
     }
@@ -317,6 +320,8 @@ void setPosButton(Adafruit_RGBLCDShield inp, boolean xAxis) {
         }
         if (buttons & BUTTON_RIGHT) {
             delay(clickDelay);
+            setPosition(getDeg(xAxis), xAxis); 
+            posScreen();
             break;
         }
       }

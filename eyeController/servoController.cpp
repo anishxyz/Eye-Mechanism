@@ -26,6 +26,11 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 #define USMAX  2400 // This is the rounded 'maximum' microsecond length based on the maximum pulse of 600
 #define SERVO_FREQ 50 // Analog servos run at ~50 Hz updates
 int servoMid = (SERVOMAX+SERVOMIN)/2;
+#define DEGMAX1  35 //max deg travel in x from origin
+#define DEGMAX2  35 //max deg travel in y from origin
+int degFactor1 = 110 / DEGMAX1;
+int degFactor2 = 110 / DEGMAX2;
+
 // our servo # counter
 uint8_t servonum = 0;
 
@@ -233,7 +238,22 @@ void backAndForth(int startPulse, int endPulse, int ms, int servoNum) {
     }
 }
 
-void setPosition(int deg, boolean xAxis) {
+int scaleDeg(int deg) {
+  int temp = (deg * degFactor1) + 330;
+  if (temp > SERVOMAX) {
+    return SERVOMAX;
+  }
+  if (temp < SERVOMIN) {
+    return SERVOMIN;
+  }
+  return temp;
+}
 
-    //pwm.setPWM(servoNum, 0, pulse); 
+void setPosition(int deg, boolean xAxis) {
+    if (xAxis) {
+      pwm.setPWM(0, 0, scaleDeg(deg));
+    } else {
+      pwm.setPWM(1, 0, scaleDeg(deg));
+    }
+    
 }
