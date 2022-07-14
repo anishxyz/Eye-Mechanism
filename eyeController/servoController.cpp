@@ -162,6 +162,9 @@ void oscillate(int ms, int oscillations, boolean input) {
     //control if axis increasing/decreasing
     boolean phase = true;
 
+    //initialize screen to display oscillate status
+    initOscRuntime();
+
     //set both axes to center
     pwm.setPWM(xServo, 0, currPos);
     pwm.setPWM(yServo, 0, currPos);
@@ -171,6 +174,9 @@ void oscillate(int ms, int oscillations, boolean input) {
 
     //number of steps complete
     int currSteps = 0;
+
+    //number of oscillations completed
+    int currOsc = 0;
 
     // loop to keep adjusting position in steps until appropriate
     // number of steps for given oscillations is complete
@@ -186,6 +192,22 @@ void oscillate(int ms, int oscillations, boolean input) {
         //swaps direction when axis limit hit
         if (currPos == SERVOMAX || currPos == SERVOMIN) {
             phase = !phase;
+        }
+
+        //used to update display for curr rotation number
+        if (currSteps % steps == 0) {
+            currOsc = currSteps / steps;
+            updateOscRuntime(currOsc);
+        }
+
+        // used to detect button click to auto halt
+        // checks ever 350 steps to reduce load
+        // allows for 'hold-until-halt'
+        if (currSteps % 350 == 0) {
+            if (checkHalt()) {
+                centerAll();
+                break;
+            }
         }
 
         //increment current step count

@@ -39,7 +39,21 @@ void orbitScreen();
 
 void oscScreen();
 
-void posScreen(); 
+void oscSpdScreen();
+
+void numOscScreen();
+
+void posScreen();
+
+int getOsc();
+
+void incrOsc(int inp);
+
+void setOscSpd(int ms);
+
+int getOscSpd();
+
+String getRotSpeedLvl();
 
 void welcome();
 
@@ -52,5 +66,14 @@ void incrStep(boolean xAxis);
 void decrStep(boolean xAxis);
 
 void setPosScreen(boolean xAxis); 
+String getOscSpeedLvl();
+
+void togOscDir();
+
+boolean getOscDir();
+
+void initOscRuntime();
+
+void updateOscRuntime(int r);
 
 #endif //EYE_MECHANISM_DISPLAYCONTROLLER_H

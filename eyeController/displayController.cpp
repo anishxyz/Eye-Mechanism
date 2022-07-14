@@ -13,10 +13,11 @@ Adafruit_RGBLCDShield lcd = Adafruit_RGBLCDShield();
 
 typedef void (*displayFunc)();
 
-int rotations = 10;
+int rotations = 5;
 int rotms = 1;
-int oscillations = 0;
-int oscms = 0;
+int oscillations = 5;
+int oscms = 1;
+boolean oscDir = true;
 
 int xStep = 4; 
 int yStep = 4; 
@@ -125,6 +126,31 @@ byte arrDub[8] =
         };
 
 
+byte oscDirY[8] =
+        {
+                0b01110,
+                0b00100,
+                0b00100,
+                0b00100,
+                0b00100,
+                0b00100,
+                0b00100,
+                0b01110
+        };
+
+
+byte oscDirX[8] =
+        {
+                0b00000,
+                0b00000,
+                0b00000,
+                0b10001,
+                0b11111,
+                0b10001,
+                0b00000,
+                0b00000
+        };
+
 void resetScreen() {
     lcd.clear();
     lcd.setCursor(0, 0);
@@ -143,19 +169,51 @@ void incrRot(int inp) {
     rotations = rotations + inp;
 }
 
+void incrOsc(int inp) {
+    oscillations = oscillations + inp;
+}
+
+boolean getOscDir() {
+    return oscDir;
+}
+
+void togOscDir() {
+    oscDir = !oscDir;
+}
+
 int getRot() {
     return rotations;
+}
+
+int getOsc() {
+    return oscillations;
 }
 
 void setRotSpd(int ms) {
     rotms = ms;
 }
 
+void setOscSpd(int ms) {
+    oscms = ms;
+}
+
 int getRotSpd() {
     return rotms;
 }
 
-String getSpeedLvl() {
+int getOscSpd() {
+    return oscms;
+}
+
+byte getDirByte() {
+    if (oscDir) {
+        return byte(5);
+    } else {
+        return byte(7);
+    }
+}
+
+String getRotSpeedLvl() {
     if (rotms == 1) {
         return "FAST";
     }
@@ -199,6 +257,17 @@ int getDeg(boolean xAxis) {
     return degreeArr[yStep]; 
   }
 }
+String getOscSpeedLvl() {
+    if (oscms == 1) {
+        return "FAST";
+    }
+    if (oscms == 3) {
+        return "Med";
+    }
+    if (oscms == 5) {
+        return "Slow";
+    }
+}
 
 void initOrbitRuntime() {
     lcd.setCursor(0,0);
@@ -207,10 +276,27 @@ void initOrbitRuntime() {
     lcd.print("0 / ");
     lcd.print(rotations);
     lcd.setCursor(12,1);
-    lcd.print(getSpeedLvl());
+    lcd.print(getRotSpeedLvl());
 }
 
 void updateOrbitRuntime(int r) {
+    lcd.setCursor(0,1);
+    lcd.print(r);
+}
+
+void initOscRuntime() {
+    lcd.setCursor(0,0);
+    lcd.print("Oscil Running...");
+    lcd.setCursor(0,1);
+    lcd.print("0 / ");
+    lcd.print(oscillations);
+    lcd.setCursor(10,1);
+    lcd.write(getDirByte());
+    lcd.setCursor(12,1);
+    lcd.print(getOscSpeedLvl());
+}
+
+void updateOscRuntime(int r) {
     lcd.setCursor(0,1);
     lcd.print(r);
 }
@@ -236,9 +322,11 @@ void displayInit() {
     lcd.createChar(2, arrRight);
     lcd.createChar(3, arrLeft);
     lcd.createChar(4, back);
-    lcd.createChar(5, mline);
+    //lcd.createChar(5, mline);
     lcd.createChar(6, rline);
     lcd.createChar(7, arrDub);
+    //lcd.createChar(8, oscDirY);
+    lcd.createChar(5, oscDirX);
 }
 
 
@@ -279,12 +367,11 @@ void rotScreen() {
 }
 
 void orbitScreen() {
-    resetScreen();
     backAndLines();
     lcd.setCursor(3, 0);
     lcd.write(byte(0));
     lcd.print(" Speed: ");
-    lcd.print(getSpeedLvl());
+    lcd.print(getRotSpeedLvl());
     lcd.setCursor(3, 1);
     lcd.write(byte(1));
     lcd.print(" Rotat: ");
@@ -296,8 +383,46 @@ void orbitScreen() {
 
 
 void oscScreen() {
-    resetScreen();
-    lcd.print("oscillate!");
+    backAndLines();
+    lcd.setCursor(3, 0);
+    lcd.write(byte(0));
+    lcd.print(" Speed: ");
+    lcd.print(getOscSpeedLvl());
+    lcd.setCursor(3, 1);
+    lcd.write(byte(1));
+    lcd.print(" Oscil: ");
+    lcd.print(oscillations);
+    lcd.setCursor(15, 1);
+    lcd.write(getDirByte());
+
+    oscButton(lcd);
+}
+
+void oscSpdScreen() {
+    backAndLines();
+    lcd.setCursor(3, 0);
+    lcd.write(byte(0));
+    lcd.print(" Slow");
+    lcd.setCursor(3, 1);
+    lcd.write(byte(1));
+    lcd.print(" Med");
+    lcd.setCursor(10, 0);
+    lcd.write(byte(2));
+    lcd.print(" FAST");
+
+    delay(10);
+    oscSpdButton(lcd);
+}
+
+void numOscScreen() {
+    backAndLines();
+    lcd.setCursor(3, 0);
+    lcd.write(byte(7));
+    lcd.print(" Oscil: ");
+    lcd.print(oscillations);
+
+    delay(10);
+    numOscButton(lcd);
 }
 
 
