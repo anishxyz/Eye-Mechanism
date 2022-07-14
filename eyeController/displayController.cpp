@@ -18,6 +18,10 @@ int rotms = 1;
 int oscillations = 0;
 int oscms = 0;
 
+int xStep = 4; 
+int yStep = 4; 
+int degreeArr[9] = {-45,-35,-25,-15,0,15,25,35,45}; 
+
 
 //custom characters
 byte arrUp[8] =
@@ -163,6 +167,39 @@ String getSpeedLvl() {
     }
 }
 
+int getStep(boolean xAxis) {
+  if(xAxis) {
+      return xStep;
+  } else {
+    return yStep; 
+  }
+}
+
+
+void incrStep(boolean xAxis) {
+  if(xAxis && xStep < 9) {
+    xStep++;  
+  } else if (!xAxis && xStep < 9) {
+    yStep++; 
+  }
+}
+
+void decrStep(boolean xAxis) {
+  if(xAxis && xStep > 0) {
+    xStep--; 
+  } else if(!xAxis && yStep > 0) {
+    yStep--;
+  }
+}
+
+int getDeg(boolean xAxis) {
+  if(xAxis) {
+      return degreeArr[xStep];
+  } else {
+    return degreeArr[yStep]; 
+  }
+}
+
 void initOrbitRuntime() {
     lcd.setCursor(0,0);
     lcd.print("Orbit Running...");
@@ -263,9 +300,34 @@ void oscScreen() {
     lcd.print("oscillate!");
 }
 
+
+void setPosScreen(boolean xAxis) {
+    backAndLines();
+    lcd.setCursor(3, 0);
+    lcd.write(byte(7));
+    lcd.print(" Degrees: ");
+
+    lcd.print(getDeg(xAxis)); 
+    delay(10);
+    
+    setPosButton(lcd, xAxis); 
+}
+
+
 void posScreen() {
     resetScreen();
-    lcd.print("position!");
+    backAndLines();
+    lcd.setCursor(3, 0);
+    lcd.write(byte(0));
+    lcd.print("xStep: ");
+    lcd.print(getDeg(true)); 
+
+    lcd.setCursor(3, 1);
+    lcd.write(byte(1));
+    lcd.print(" yStep: ");
+    lcd.print(getDeg(false)); 
+
+    posButton(lcd); 
 }
 
 void welcome() {

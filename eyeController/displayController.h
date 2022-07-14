@@ -20,6 +20,7 @@ int getRot();
 
 int getRotSpd();
 
+
 void updateOrbitRuntime(int r);
 
 void initOrbitRuntime();
@@ -38,8 +39,18 @@ void orbitScreen();
 
 void oscScreen();
 
-void posScreen();
+void posScreen(); 
 
 void welcome();
+
+int getDeg(boolean xAxis); 
+
+int getStep(boolean xAxis); 
+
+void incrStep(boolean xAxis); 
+
+void decrStep(boolean xAxis);
+
+void setPosScreen(boolean xAxis); 
 
 #endif //EYE_MECHANISM_DISPLAYCONTROLLER_H

@@ -210,4 +210,7 @@ void backAndForth(int startPulse, int endPulse, int ms, int servoNum) {
     }
 }
 
+void setPosition(int deg, boolean xAxis) {
 
+    //pwm.setPWM(servoNum, 0, pulse); 
+}

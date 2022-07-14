@@ -133,3 +133,62 @@ void rotSpdButton(Adafruit_RGBLCDShield inp) {
         }
     }
 }
+
+void posButton(Adafruit_RGBLCDShield inp) {
+    uint8_t buttons = inp.readButtons();
+    boolean state = true;
+
+    while (inp.readButtons() || state) {
+        buttons = inp.readButtons();
+        if (buttons & BUTTON_UP) {
+            delay(clickDelay); //delay so click does not hold onto next screen
+            setPosScreen(true);
+            break;
+        }
+        if (buttons & BUTTON_DOWN) {
+            delay(clickDelay);
+            setPosScreen(false);
+            break;
+        }
+        if (buttons & BUTTON_LEFT) {
+            delay(clickDelay);
+            homeScreen();
+            break;
+        }
+        if (buttons & BUTTON_RIGHT) {
+
+            break;
+        }
+    }
+ }
+
+void setPosButton(Adafruit_RGBLCDShield inp, boolean xAxis) {
+    uint8_t buttons = inp.readButtons();
+    boolean state = true;
+
+    while (inp.readButtons() || state) {
+        buttons = inp.readButtons();
+        if (buttons & BUTTON_UP) {
+            incrStep(xAxis); 
+            delay(250); //delay so click does not hold onto next screen
+            setPosScreen(xAxis);
+            break;
+        }
+        if (buttons & BUTTON_DOWN) {
+            decrStep(xAxis); 
+            delay(250);
+            setPosScreen(xAxis);
+            break;
+        }
+        if (buttons & BUTTON_LEFT) {
+            delay(clickDelay);
+            setPosition(getDeg(xAxis), xAxis); 
+            posScreen();
+            break;
+        }
+        if (buttons & BUTTON_RIGHT) {
+            delay(350);
+            break;
+        }
+      }
+   }
