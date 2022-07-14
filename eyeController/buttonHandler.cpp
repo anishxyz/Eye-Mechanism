@@ -66,13 +66,21 @@ void orbitButton(Adafruit_RGBLCDShield inp) {
             homeScreen();
             break;
         }
-        if (buttons & (BUTTON_RIGHT || BUTTON_SELECT)) {
+        if (buttons & BUTTON_RIGHT) {
             resetScreen();
             delay(350);
             orbit(getRotSpd(), getRot());
             orbitScreen();
             break;
         }
+
+//        if (buttons & BUTTON_SELECT) {
+//            resetScreen();
+//            delay(350);
+//            orbit(getRotSpd(), getRot());
+//            orbitScreen();
+//            break;
+//        }
     }
 }
 
@@ -99,13 +107,20 @@ void rotButton(Adafruit_RGBLCDShield inp) {
             orbitScreen();
             break;
         }
-        if (buttons & (BUTTON_RIGHT || BUTTON_SELECT)) {
+        if (buttons & BUTTON_RIGHT) {
             resetScreen();
             delay(350);
             orbit(getRotSpd(), getRot());
             orbitScreen();
             break;
         }
+//        if (buttons & BUTTON_SELECT) {
+//            resetScreen();
+//            delay(350);
+//            orbit(getRotSpd(), getRot());
+//            orbitScreen();
+//            break;
+//        }
     }
 }
 

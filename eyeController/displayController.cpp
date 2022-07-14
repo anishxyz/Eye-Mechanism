@@ -254,6 +254,8 @@ void initOscRuntime() {
     lcd.setCursor(0,1);
     lcd.print("0 / ");
     lcd.print(oscillations);
+    lcd.setCursor(10,1);
+    lcd.write(getDirByte());
     lcd.setCursor(12,1);
     lcd.print(getOscSpeedLvl());
 }
