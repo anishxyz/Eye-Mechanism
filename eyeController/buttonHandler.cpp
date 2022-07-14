@@ -75,6 +75,8 @@ void orbitButton(Adafruit_RGBLCDShield inp) {
             break;
         }
 
+//        add select button to also activate motion
+//        *removed because of interaction with halt
 //        if (buttons & BUTTON_SELECT) {
 //            resetScreen();
 //            delay(350);
@@ -115,6 +117,8 @@ void rotButton(Adafruit_RGBLCDShield inp) {
             orbitScreen();
             break;
         }
+//        add select button to also activate motion
+//        *removed because of interaction with halt
 //        if (buttons & BUTTON_SELECT) {
 //            resetScreen();
 //            delay(350);

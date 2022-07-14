@@ -29,5 +29,13 @@ String getRotSpeedLvl();
 
 String getOscSpeedLvl();
 
+int getStep(bool xAxis);
+
+void incrStep(bool xAxis);
+
+void decrStep(bool xAxis);
+
+int getDeg(bool xAxis);
+
 
 #endif //EYE_MECHANISM_PARAMMANAGER_H

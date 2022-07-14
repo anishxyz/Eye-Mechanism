@@ -13,13 +13,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="reorganizing">
-      <change afterPath="$PROJECT_DIR$/eyeController/paramManager.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eyeController/paramManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eyeController/buttonHandler.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/buttonHandler.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eyeController/displayController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/displayController.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eyeController/displayController.h" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/displayController.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/servoController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/servoController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eyeController/paramManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/paramManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eyeController/paramManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/paramManager.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +93,7 @@
       <workItem from="1657753194799" duration="469000" />
       <workItem from="1657753726032" duration="568000" />
       <workItem from="1657754359438" duration="5995000" />
-      <workItem from="1657762753452" duration="2474000" />
+      <workItem from="1657762753452" duration="3936000" />
     </task>
     <task id="LOCAL-00001" summary="reorganizing">
       <created>1657588515792</created>

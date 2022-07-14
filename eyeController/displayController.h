@@ -36,17 +36,7 @@ void numOscScreen();
 
 void posScreen();
 
-String getRotSpeedLvl();
-
 void welcome();
-
-int getDeg(boolean xAxis); 
-
-int getStep(boolean xAxis); 
-
-void incrStep(boolean xAxis); 
-
-void decrStep(boolean xAxis);
 
 void setPosScreen(boolean xAxis);
 

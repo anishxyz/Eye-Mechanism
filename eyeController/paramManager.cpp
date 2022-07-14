@@ -4,9 +4,6 @@
 
 #include <Wire.h>
 
-
-typedef void (*displayFunc)();
-
 int rotations = 5;
 int rotms = 1;
 int rotSlow = 5;
@@ -19,6 +16,10 @@ bool oscDir = true;
 int oscSlow = 5;
 int oscMed = 3;
 int oscFast = 1;
+
+int xStep = 4;
+int yStep = 4;
+int degreeArr[9] = {-9,-35,-25,-15,0, 15,25,35,45};
 
 void incrRot(int inp) {
     rotations = rotations + inp;
@@ -94,5 +95,38 @@ String getOscSpeedLvl() {
     }
     if (oscms == oscSlow) {
         return "Slow";
+    }
+}
+
+int getStep(bool xAxis) {
+    if(xAxis) {
+        return xStep;
+    } else {
+        return yStep;
+    }
+}
+
+
+void incrStep(bool xAxis) {
+    if(xAxis && xStep < 8) {
+        xStep++;
+    } else if (!xAxis && yStep < 8) {
+        yStep++;
+    }
+}
+
+void decrStep(bool xAxis) {
+    if(xAxis && xStep > 0) {
+        xStep--;
+    } else if(!xAxis && yStep > 0) {
+        yStep--;
+    }
+}
+
+int getDeg(bool xAxis) {
+    if(xAxis) {
+        return degreeArr[xStep];
+    } else {
+        return degreeArr[yStep];
     }
 }

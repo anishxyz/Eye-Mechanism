@@ -14,11 +14,9 @@ Adafruit_RGBLCDShield lcd = Adafruit_RGBLCDShield();
 
 typedef void (*displayFunc)();
 
-int xStep = 4;
-int yStep = 4;
-int degreeArr[9] = {-9,-35,-25,-15,0, 15,25,35,45};
-
 //custom characters
+
+//up arrow
 byte arrUp[8] =
         {
                 0b00000,
@@ -31,7 +29,7 @@ byte arrUp[8] =
                 0b00000
         };
 
-
+//down arrow
 byte arrDown[8] =
         {
                 0b00000,
@@ -44,6 +42,7 @@ byte arrDown[8] =
                 0b00000
         };
 
+//right arrow
 byte arrRight[8] =
         {
                 0b00000,
@@ -56,6 +55,7 @@ byte arrRight[8] =
                 0b00000
         };
 
+//left arrow
 byte arrLeft[8] =
         {
                 0b00000,
@@ -68,7 +68,7 @@ byte arrLeft[8] =
                 0b00000
         };
 
-
+//back button
 byte back[8] =
         {
                 0b00000,
@@ -81,7 +81,7 @@ byte back[8] =
                 0b00000
         };
 
-
+//vertical line in middle
 byte mline[8] =
         {
                 0b00100,
@@ -94,6 +94,7 @@ byte mline[8] =
                 0b00100
         };
 
+//vertical line right-justified
 byte rline[8] =
         {
                 0b00001,
@@ -106,7 +107,7 @@ byte rline[8] =
                 0b00001
         };
 
-
+//arrows up and down
 byte arrDub[8] =
         {
                 0b00100,
@@ -119,7 +120,7 @@ byte arrDub[8] =
                 0b00100
         };
 
-
+//vertical line with tabs
 byte oscDirY[8] =
         {
                 0b01110,
@@ -132,7 +133,7 @@ byte oscDirY[8] =
                 0b01110
         };
 
-
+//horizontal line with tabs
 byte oscDirX[8] =
         {
                 0b00000,
@@ -145,9 +146,49 @@ byte oscDirX[8] =
                 0b00000
         };
 
+void displayInit() {
+    lcd.begin(16, 2);
+    lcd.setBacklight(WHITE);
+    lcd.createChar(0, arrUp);
+    lcd.createChar(1, arrDown);
+    lcd.createChar(2, arrRight);
+    lcd.createChar(3, arrLeft);
+    lcd.createChar(4, back);
+    //lcd.createChar(5, mline);
+    lcd.createChar(6, rline);
+    lcd.createChar(7, arrDub);
+    //lcd.createChar(8, oscDirY);
+    lcd.createChar(5, oscDirX);
+}
+
 void resetScreen() {
     lcd.clear();
     lcd.setCursor(0, 0);
+}
+
+void welcome() {
+    resetScreen();
+    lcd.print("Eye Mechanism");
+    lcd.setCursor(0, 1);
+    lcd.print("by anish & kito");
+    delay(2000);
+    lcd.clear();
+}
+
+
+void homeScreen() {
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.write(byte(0));
+    lcd.print(" Orbit");
+    lcd.setCursor(0, 1);
+    lcd.write(byte(1));
+    lcd.print(" Oscillate");
+    lcd.setCursor(11, 0);
+    lcd.write(byte(2));
+    lcd.print(" Pos");
+
+    homeButton(lcd);
 }
 
 void backAndLines() {
@@ -159,49 +200,32 @@ void backAndLines() {
     lcd.write(byte(6));
 }
 
+void orbitScreen() {
+    backAndLines();
+    lcd.setCursor(3, 0);
+    lcd.write(byte(0));
+    lcd.print(" Speed: ");
+    lcd.print(getRotSpeedLvl());
+    lcd.setCursor(3, 1);
+    lcd.write(byte(1));
+    lcd.print(" Rotat: ");
+    lcd.print(getRot());
 
-byte getDirByte() {
-    if (getOscDir()) {
-        return byte(5);
-    } else {
-        return byte(7);
-    }
+    //initButton();
+    orbitButton(lcd);
 }
 
 
-int getStep(boolean xAxis) {
-  if(xAxis) {
-      return xStep;
-  } else {
-    return yStep; 
-  }
+void rotScreen() {
+    backAndLines();
+    lcd.setCursor(3, 0);
+    lcd.write(byte(7));
+    lcd.print(" Rotat: ");
+    lcd.print(getRot());
+
+    delay(10);
+    rotButton(lcd);
 }
-
-
-void incrStep(boolean xAxis) {
-  if(xAxis && xStep < 8) {
-    xStep++;  
-  } else if (!xAxis && yStep < 8) {
-    yStep++; 
-  }
-}
-
-void decrStep(boolean xAxis) {
-  if(xAxis && xStep > 0) {
-    xStep--; 
-  } else if(!xAxis && yStep > 0) {
-    yStep--;
-  }
-}
-
-int getDeg(boolean xAxis) {
-  if(xAxis) {
-     return degreeArr[xStep];
-  } else {
-    return degreeArr[yStep]; 
-  }
-}
-
 
 void initOrbitRuntime() {
     lcd.setCursor(0,0);
@@ -216,6 +240,30 @@ void initOrbitRuntime() {
 void updateOrbitRuntime(int r) {
     lcd.setCursor(0,1);
     lcd.print(r);
+}
+
+byte getDirByte() {
+    if (getOscDir()) {
+        return byte(5);
+    } else {
+        return byte(7);
+    }
+}
+
+void oscScreen() {
+    backAndLines();
+    lcd.setCursor(3, 0);
+    lcd.write(byte(0));
+    lcd.print(" Speed: ");
+    lcd.print(getOscSpeedLvl());
+    lcd.setCursor(3, 1);
+    lcd.write(byte(1));
+    lcd.print(" Oscil: ");
+    lcd.print(getOsc());
+    lcd.setCursor(15, 1);
+    lcd.write(getDirByte());
+
+    oscButton(lcd);
 }
 
 void initOscRuntime() {
@@ -248,22 +296,6 @@ bool checkHalt() {
 }
 
 
-void displayInit() {
-    lcd.begin(16, 2);
-    lcd.setBacklight(WHITE);
-    lcd.createChar(0, arrUp);
-    lcd.createChar(1, arrDown);
-    lcd.createChar(2, arrRight);
-    lcd.createChar(3, arrLeft);
-    lcd.createChar(4, back);
-    //lcd.createChar(5, mline);
-    lcd.createChar(6, rline);
-    lcd.createChar(7, arrDub);
-    //lcd.createChar(8, oscDirY);
-    lcd.createChar(5, oscDirX);
-}
-
-
 void displayScroll(String text) {
     lcd.print(text);
     //delay(1000);
@@ -289,48 +321,6 @@ void rotSpdScreen() {
     rotSpdButton(lcd);
 }
 
-void rotScreen() {
-    backAndLines();
-    lcd.setCursor(3, 0);
-    lcd.write(byte(7));
-    lcd.print(" Rotat: ");
-    lcd.print(getRot());
-
-    delay(10);
-    rotButton(lcd);
-}
-
-void orbitScreen() {
-    backAndLines();
-    lcd.setCursor(3, 0);
-    lcd.write(byte(0));
-    lcd.print(" Speed: ");
-    lcd.print(getRotSpeedLvl());
-    lcd.setCursor(3, 1);
-    lcd.write(byte(1));
-    lcd.print(" Rotat: ");
-    lcd.print(getRot());
-
-    //initButton();
-    orbitButton(lcd);
-}
-
-
-void oscScreen() {
-    backAndLines();
-    lcd.setCursor(3, 0);
-    lcd.write(byte(0));
-    lcd.print(" Speed: ");
-    lcd.print(getOscSpeedLvl());
-    lcd.setCursor(3, 1);
-    lcd.write(byte(1));
-    lcd.print(" Oscil: ");
-    lcd.print(getOsc());
-    lcd.setCursor(15, 1);
-    lcd.write(getDirByte());
-
-    oscButton(lcd);
-}
 
 void oscSpdScreen() {
     backAndLines();
@@ -391,29 +381,4 @@ void posScreen() {
     lcd.print(getDeg(false)); 
 
     posButton(lcd); 
-}
-
-void welcome() {
-    resetScreen();
-    lcd.print("Eye Mechanism");
-    lcd.setCursor(0, 1);
-    lcd.print("by anish & kito");
-    delay(2000);
-    lcd.clear();
-}
-
-
-void homeScreen() {
-    lcd.clear();
-    lcd.setCursor(0, 0);
-    lcd.write(byte(0));
-    lcd.print(" Orbit");
-    lcd.setCursor(0, 1);
-    lcd.write(byte(1));
-    lcd.print(" Oscillate");
-    lcd.setCursor(11, 0);
-    lcd.write(byte(2));
-    lcd.print(" Pos");
-
-    homeButton(lcd);
 }
