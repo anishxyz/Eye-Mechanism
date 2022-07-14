@@ -248,6 +248,21 @@ void updateOrbitRuntime(int r) {
     lcd.print(r);
 }
 
+void initOscRuntime() {
+    lcd.setCursor(0,0);
+    lcd.print("Oscil Running...");
+    lcd.setCursor(0,1);
+    lcd.print("0 / ");
+    lcd.print(oscillations);
+    lcd.setCursor(12,1);
+    lcd.print(getOscSpeedLvl());
+}
+
+void updateOscRuntime(int r) {
+    lcd.setCursor(0,1);
+    lcd.print(r);
+}
+
 boolean checkHalt() {
     uint8_t buttons = lcd.readButtons();
 

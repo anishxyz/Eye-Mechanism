@@ -62,4 +62,8 @@ void togOscDir();
 
 boolean getOscDir();
 
+void initOscRuntime();
+
+void updateOscRuntime(int r);
+
 #endif //EYE_MECHANISM_DISPLAYCONTROLLER_H
