@@ -44,6 +44,22 @@ void numOscScreen();
 
 void posScreen();
 
+int getOsc();
+
+void incrOsc(int inp);
+
+void setOscSpd(int ms);
+
+int getOscSpd();
+
+String getRotSpeedLvl();
+
 void welcome();
+
+String getOscSpeedLvl();
+
+void togOscDir();
+
+boolean getOscDir();
 
 #endif //EYE_MECHANISM_DISPLAYCONTROLLER_H
