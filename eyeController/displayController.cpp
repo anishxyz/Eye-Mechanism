@@ -21,7 +21,7 @@ boolean oscDir = true;
 
 int xStep = 4; 
 int yStep = 4; 
-int degreeArr[9] = {-45,-35,-25,-15,0,15,25,35,45}; 
+int degreeArr[9] = {-9,-35,-25,-15,0, 15,25,35,45}; 
 
 
 //custom characters
@@ -235,9 +235,9 @@ int getStep(boolean xAxis) {
 
 
 void incrStep(boolean xAxis) {
-  if(xAxis && xStep < 9) {
+  if(xAxis && xStep < 8) {
     xStep++;  
-  } else if (!xAxis && xStep < 9) {
+  } else if (!xAxis && yStep < 8) {
     yStep++; 
   }
 }
@@ -252,7 +252,7 @@ void decrStep(boolean xAxis) {
 
 int getDeg(boolean xAxis) {
   if(xAxis) {
-      return degreeArr[xStep];
+     return degreeArr[xStep];
   } else {
     return degreeArr[yStep]; 
   }
@@ -430,8 +430,12 @@ void setPosScreen(boolean xAxis) {
     backAndLines();
     lcd.setCursor(3, 0);
     lcd.write(byte(7));
-    lcd.print(" Degrees: ");
-
+    if (xAxis) {
+     lcd.print(" X-Deg: ");
+    } else {
+      lcd.print(" Y-Deg: ");
+    }
+    
     lcd.print(getDeg(xAxis)); 
     delay(10);
     
@@ -444,12 +448,12 @@ void posScreen() {
     backAndLines();
     lcd.setCursor(3, 0);
     lcd.write(byte(0));
-    lcd.print("xStep: ");
+    lcd.print(" X-Deg: ");
     lcd.print(getDeg(true)); 
 
     lcd.setCursor(3, 1);
     lcd.write(byte(1));
-    lcd.print(" yStep: ");
+    lcd.print(" Y-Deg: ");
     lcd.print(getDeg(false)); 
 
     posButton(lcd); 

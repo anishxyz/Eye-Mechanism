@@ -311,7 +311,7 @@ void setPosButton(Adafruit_RGBLCDShield inp, boolean xAxis) {
             break;
         }
         if (buttons & BUTTON_RIGHT) {
-            delay(350);
+            delay(clickDelay);
             break;
         }
       }
