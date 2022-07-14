@@ -13,9 +13,9 @@ Adafruit_RGBLCDShield lcd = Adafruit_RGBLCDShield();
 
 typedef void (*displayFunc)();
 
-int rotations = 10;
+int rotations = 5;
 int rotms = 1;
-int oscillations = 0;
+int oscillations = 5;
 int oscms = 0;
 
 
@@ -242,7 +242,6 @@ void rotScreen() {
 }
 
 void orbitScreen() {
-    resetScreen();
     backAndLines();
     lcd.setCursor(3, 0);
     lcd.write(byte(0));
@@ -259,8 +258,29 @@ void orbitScreen() {
 
 
 void oscScreen() {
-    resetScreen();
-    lcd.print("oscillate!");
+    backAndLines();
+    lcd.setCursor(3, 0);
+    lcd.write(byte(0));
+    lcd.print(" Speed: ");
+    lcd.print(getSpeedLvl());
+    lcd.setCursor(3, 1);
+    lcd.write(byte(1));
+    lcd.print(" Oscil: ");
+    lcd.print(oscillations);
+
+    oscButton(lcd);
+}
+
+void oscSpdScreen() {
+    backAndLines();
+    lcd.setCursor(3, 0);
+    lcd.print(" Speed Adjust ");
+}
+
+void numOscScreen() {
+    backAndLines();
+    lcd.setCursor(3, 0);
+    lcd.print(" Num Osc Adjust");
 }
 
 void posScreen() {

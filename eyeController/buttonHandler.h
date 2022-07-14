@@ -54,4 +54,6 @@ void rotButton(Adafruit_RGBLCDShield inp);
  */
 void rotSpdButton(Adafruit_RGBLCDShield inp);
 
+void oscButton(Adafruit_RGBLCDShield inp);
+
 #endif //EYE_MECHANISM_BUTTONHANDLER_H

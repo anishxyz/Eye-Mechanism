@@ -133,3 +133,34 @@ void rotSpdButton(Adafruit_RGBLCDShield inp) {
         }
     }
 }
+
+void oscButton(Adafruit_RGBLCDShield inp) {
+    uint8_t buttons = inp.readButtons();
+    boolean state = true;
+
+    while (inp.readButtons() || state) {
+        buttons = inp.readButtons();
+        if (buttons & BUTTON_UP) {
+            delay(clickDelay); //delay so click does not hold onto next screen
+            oscSpdScreen();
+            break;
+        }
+        if (buttons & BUTTON_DOWN) {
+            delay(clickDelay);
+            numOscScreen();
+            break;
+        }
+        if (buttons & BUTTON_LEFT) {
+            delay(clickDelay);
+            homeScreen();
+            break;
+        }
+        if (buttons & BUTTON_RIGHT) {
+            resetScreen();
+            delay(350);
+            oscillate(getRotSpd(), getRot(), true);
+            oscScreen();
+            break;
+        }
+    }
+}

@@ -38,6 +38,10 @@ void orbitScreen();
 
 void oscScreen();
 
+void oscSpdScreen();
+
+void numOscScreen();
+
 void posScreen();
 
 void welcome();
