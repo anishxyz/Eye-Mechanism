@@ -5,6 +5,7 @@
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
 #include "displayController.h"
+#include "paramManager.h"
 
 
 //Servo Setup

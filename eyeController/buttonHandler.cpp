@@ -8,6 +8,7 @@
 #include <Adafruit_PWMServoDriver.h>
 #include "servoController.h"
 #include "displayController.h"
+#include "paramManager.h"
 
 // delay after button clicks so no accidental "double-click"
 int clickDelay = 150;
@@ -131,13 +132,13 @@ void rotSpdButton(Adafruit_RGBLCDShield inp) {
     while (inp.readButtons() || state) {
         buttons = inp.readButtons();
         if (buttons & BUTTON_UP) {
-            setRotSpd(5);
+            setRotSpd(1);
             delay(clickDelay); //delay so click does not hold onto next screen
             orbitScreen();
             break;
         }
         if (buttons & BUTTON_DOWN) {
-            setRotSpd(3);
+            setRotSpd(2);
             delay(clickDelay);
             orbitScreen();
             break;
@@ -148,7 +149,7 @@ void rotSpdButton(Adafruit_RGBLCDShield inp) {
             break;
         }
         if (buttons & BUTTON_RIGHT) {
-            setRotSpd(1);
+            setRotSpd(3);
             delay(clickDelay);
             orbitScreen();
             break;
@@ -233,13 +234,13 @@ void oscSpdButton(Adafruit_RGBLCDShield inp) {
     while (inp.readButtons() || state) {
         buttons = inp.readButtons();
         if (buttons & BUTTON_UP) {
-            setOscSpd(5);
+            setOscSpd(1);
             delay(clickDelay); //delay so click does not hold onto next screen
             oscScreen();
             break;
         }
         if (buttons & BUTTON_DOWN) {
-            setOscSpd(3);
+            setOscSpd(2);
             delay(clickDelay);
             oscScreen();
             break;
@@ -250,7 +251,7 @@ void oscSpdButton(Adafruit_RGBLCDShield inp) {
             break;
         }
         if (buttons & BUTTON_RIGHT) {
-            setOscSpd(1);
+            setOscSpd(3);
             delay(clickDelay);
             oscScreen();
             break;

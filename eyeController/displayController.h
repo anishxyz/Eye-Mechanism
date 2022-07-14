@@ -12,20 +12,11 @@ void backAndLines();
 
 void rotScreen();
 
-void setRotSpd (int ms);
-
-void incrRot(int inp);
-
-int getRot();
-
-int getRotSpd();
-
-
 void updateOrbitRuntime(int r);
 
 void initOrbitRuntime();
 
-boolean checkHalt();
+bool checkHalt();
 
 void displayInit();
 
@@ -45,14 +36,6 @@ void numOscScreen();
 
 void posScreen();
 
-int getOsc();
-
-void incrOsc(int inp);
-
-void setOscSpd(int ms);
-
-int getOscSpd();
-
 String getRotSpeedLvl();
 
 void welcome();
@@ -65,12 +48,7 @@ void incrStep(boolean xAxis);
 
 void decrStep(boolean xAxis);
 
-void setPosScreen(boolean xAxis); 
-String getOscSpeedLvl();
-
-void togOscDir();
-
-boolean getOscDir();
+void setPosScreen(boolean xAxis);
 
 void initOscRuntime();
 

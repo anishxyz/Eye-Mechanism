@@ -6,6 +6,7 @@
 #include <utility/Adafruit_MCP23017.h>
 #include <Adafruit_PWMServoDriver.h>
 #include "buttonHandler.h"
+#include "paramManager.h"
 
 //Display Setup
 Adafruit_RGBLCDShield lcd = Adafruit_RGBLCDShield();
@@ -13,16 +14,9 @@ Adafruit_RGBLCDShield lcd = Adafruit_RGBLCDShield();
 
 typedef void (*displayFunc)();
 
-int rotations = 5;
-int rotms = 1;
-int oscillations = 5;
-int oscms = 1;
-boolean oscDir = true;
-
-int xStep = 4; 
-int yStep = 4; 
-int degreeArr[9] = {-9,-35,-25,-15,0, 15,25,35,45}; 
-
+int xStep = 4;
+int yStep = 4;
+int degreeArr[9] = {-9,-35,-25,-15,0, 15,25,35,45};
 
 //custom characters
 byte arrUp[8] =
@@ -165,65 +159,15 @@ void backAndLines() {
     lcd.write(byte(6));
 }
 
-void incrRot(int inp) {
-    rotations = rotations + inp;
-}
-
-void incrOsc(int inp) {
-    oscillations = oscillations + inp;
-}
-
-boolean getOscDir() {
-    return oscDir;
-}
-
-void togOscDir() {
-    oscDir = !oscDir;
-}
-
-int getRot() {
-    return rotations;
-}
-
-int getOsc() {
-    return oscillations;
-}
-
-void setRotSpd(int ms) {
-    rotms = ms;
-}
-
-void setOscSpd(int ms) {
-    oscms = ms;
-}
-
-int getRotSpd() {
-    return rotms;
-}
-
-int getOscSpd() {
-    return oscms;
-}
 
 byte getDirByte() {
-    if (oscDir) {
+    if (getOscDir()) {
         return byte(5);
     } else {
         return byte(7);
     }
 }
 
-String getRotSpeedLvl() {
-    if (rotms == 1) {
-        return "FAST";
-    }
-    if (rotms == 3) {
-        return "Med";
-    }
-    if (rotms == 5) {
-        return "Slow";
-    }
-}
 
 int getStep(boolean xAxis) {
   if(xAxis) {
@@ -257,24 +201,14 @@ int getDeg(boolean xAxis) {
     return degreeArr[yStep]; 
   }
 }
-String getOscSpeedLvl() {
-    if (oscms == 1) {
-        return "FAST";
-    }
-    if (oscms == 3) {
-        return "Med";
-    }
-    if (oscms == 5) {
-        return "Slow";
-    }
-}
+
 
 void initOrbitRuntime() {
     lcd.setCursor(0,0);
     lcd.print("Orbit Running...");
     lcd.setCursor(0,1);
     lcd.print("0 / ");
-    lcd.print(rotations);
+    lcd.print(getRot());
     lcd.setCursor(12,1);
     lcd.print(getRotSpeedLvl());
 }
@@ -289,7 +223,7 @@ void initOscRuntime() {
     lcd.print("Oscil Running...");
     lcd.setCursor(0,1);
     lcd.print("0 / ");
-    lcd.print(oscillations);
+    lcd.print(getOsc());
     lcd.setCursor(10,1);
     lcd.write(getDirByte());
     lcd.setCursor(12,1);
@@ -301,7 +235,7 @@ void updateOscRuntime(int r) {
     lcd.print(r);
 }
 
-boolean checkHalt() {
+bool checkHalt() {
     uint8_t buttons = lcd.readButtons();
 
     if (buttons) {
@@ -360,7 +294,7 @@ void rotScreen() {
     lcd.setCursor(3, 0);
     lcd.write(byte(7));
     lcd.print(" Rotat: ");
-    lcd.print(rotations);
+    lcd.print(getRot());
 
     delay(10);
     rotButton(lcd);
@@ -375,7 +309,7 @@ void orbitScreen() {
     lcd.setCursor(3, 1);
     lcd.write(byte(1));
     lcd.print(" Rotat: ");
-    lcd.print(rotations);
+    lcd.print(getRot());
 
     //initButton();
     orbitButton(lcd);
@@ -391,7 +325,7 @@ void oscScreen() {
     lcd.setCursor(3, 1);
     lcd.write(byte(1));
     lcd.print(" Oscil: ");
-    lcd.print(oscillations);
+    lcd.print(getOsc());
     lcd.setCursor(15, 1);
     lcd.write(getDirByte());
 
@@ -419,7 +353,7 @@ void numOscScreen() {
     lcd.setCursor(3, 0);
     lcd.write(byte(7));
     lcd.print(" Oscil: ");
-    lcd.print(oscillations);
+    lcd.print(getOsc());
 
     delay(10);
     numOscButton(lcd);
