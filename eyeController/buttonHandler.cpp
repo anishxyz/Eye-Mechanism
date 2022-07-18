@@ -9,6 +9,7 @@
 #include "servoController.h"
 #include "displayController.h"
 #include "paramManager.h"
+#include "joystick.h"
 
 // delay after button clicks so no accidental "double-click"
 int clickDelay = 150;
@@ -263,12 +264,44 @@ void oscSpdButton(Adafruit_RGBLCDShield inp) {
     }
 }
 
+void posJoystick(Adafruit_RGBLCDShield inp) {
+    boolean state = true;
+    centerAll();
+
+    while (state) {
+        if (joySW()) {
+            //state = false;
+        }
+
+        Serial.println("X: " + getPWMX());
+        Serial.println("Y: " + getPWMX());
+        Serial.println();
+
+        incrCoord(true, joyX());
+        incrCoord(false, joyY());
+    }
+}
+
 void posButton(Adafruit_RGBLCDShield inp) {
     uint8_t buttons = inp.readButtons();
-    boolean state = true;
+    bool state = true;
+    bool joyBut = true;
 
     while (inp.readButtons() || state) {
         buttons = inp.readButtons();
+
+        if (joyBut) {
+            incrCoord(true, joyX());
+            incrCoord(false, joyY());
+        }
+
+        if (joySW()) {
+            Serial.println("clicked!");
+            joyBut = !joyBut;
+            delay(clickDelay);
+            delay(clickDelay);
+        }
+
         if (buttons & BUTTON_UP) {
             delay(clickDelay); //delay so click does not hold onto next screen
             setPosScreen(true);

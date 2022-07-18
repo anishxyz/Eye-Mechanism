@@ -31,6 +31,9 @@ int servoMid = (SERVOMAX+SERVOMIN)/2;
 int degFactor1 = 110 / DEGMAX1;
 int degFactor2 = 110 / DEGMAX2;
 
+int pwmX = 330;
+int pwmY = 330;
+
 // our servo # counter
 uint8_t servonum = 0;
 
@@ -65,6 +68,8 @@ void centerAll() {
         pwm.setPWM(i, 0, servoMid);
         Serial.println(servoMid);
     }
+    pwmX = servoMid;
+    pwmY = servoMid;
 }
 
 void orbit(int ms, int rotations) {
@@ -139,6 +144,9 @@ void orbit(int ms, int rotations) {
                 break;
             }
         }
+
+        pwmX = currX;
+        pwmY = currY;
 
         //increment current step count
         currSteps++;
@@ -216,6 +224,11 @@ void oscillate(int ms, int oscillations, boolean input) {
             }
         }
 
+        if (input) {
+            pwmX = currPos;
+        } else {
+            pwmY = currPos;
+        }
         //increment current step count
         currSteps++;
 
@@ -252,8 +265,37 @@ int scaleDeg(int deg) {
 void setPosition(int deg, boolean xAxis) {
     if (xAxis) {
       pwm.setPWM(0, 0, scaleDeg(deg));
+      pwmX = scaleDeg(deg);
     } else {
       pwm.setPWM(1, 0, scaleDeg(deg));
+      pwmY = scaleDeg(deg);
     }
-    
 }
+
+int scalePWM(bool xAxis) {
+    if (xAxis) {
+        return pwmX - 330;
+    }
+    return pwmY - 330;
+}
+
+void incrCoord(bool axis, int steps) {
+    if (abs(scalePWM(axis) + steps) <= 110) {
+        if (axis) {
+            pwm.setPWM(0, 0, pwmX + steps);
+            pwmX = pwmX + steps;
+        } else {
+            pwm.setPWM(1, 0, pwmY + steps);
+            pwmY = pwmY + steps;
+        }
+    }
+}
+
+int getPWMX() {
+    return pwmX;
+}
+
+int getPWMY() {
+    return pwmY;
+}
+

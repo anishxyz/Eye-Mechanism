@@ -380,5 +380,6 @@ void posScreen() {
     lcd.print(" Y-Deg: ");
     lcd.print(getDeg(false)); 
 
-    posButton(lcd); 
+    //posButton(lcd);
+    posButton(lcd);
 }

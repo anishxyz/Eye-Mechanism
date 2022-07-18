@@ -1,6 +1,8 @@
 //
 // Created by Anish Agrawal on 7/18/22.
 //
+#include <Wire.h>
+#include <Adafruit_PWMServoDriver.h>
 
 int VRx = A0;
 int VRy = A1;
@@ -12,8 +14,9 @@ int SW_state = 0;
 int mapX = 0;
 int mapY = 0;
 
-int maxAccel = 5;
-int deadZone = 2;
+int maxAccel = 3;
+int scalar = 512 / maxAccel;
+int deadZone = 0;
 
 void jostickInit() {
     Serial.begin(9600);
@@ -25,14 +28,20 @@ void jostickInit() {
 
 int joyX() {
     xPosition = analogRead(VRx);
-    mapX = map(xPosition, 0, 2 * maxAccel, -maxAccel, maxAccel);
-    return mapX;
+    mapX = map(xPosition, 0, 1023, -512, 512);
+    if (abs(mapX) <= deadZone) {
+        return 0;
+    }
+    return mapX / scalar;
 }
 
 int joyY() {
     yPosition = analogRead(VRy);
-    mapX = map(yPosition, 0, 2 * maxAccel, -maxAccel, maxAccel);
-    return mapY;
+    mapY = map(yPosition, 0, 1023, -512, 512);
+    if (abs(mapY) <= deadZone) {
+        return 0;
+    }
+    return mapY / scalar;
 }
 
 bool joySW() {
