@@ -51,4 +51,6 @@ int getPWMX();
 
 int getPWMY();
 
+float getPWMDeg(bool xAxis);
+
 #endif //EYE_MECHANISM_SERVOCONTROLLER_H

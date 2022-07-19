@@ -7,6 +7,7 @@
 #include <Adafruit_PWMServoDriver.h>
 #include "buttonHandler.h"
 #include "paramManager.h"
+#include "servoController.h"
 
 //Display Setup
 Adafruit_RGBLCDShield lcd = Adafruit_RGBLCDShield();
@@ -382,4 +383,11 @@ void posScreen() {
 
     //posButton(lcd);
     posButton(lcd);
+}
+
+void posPrint() {
+    lcd.setCursor(12, 0);
+    lcd.print(getPWMDeg(true), 1);
+    lcd.setCursor(12, 1);
+    lcd.print(getPWMDeg(false), 1);
 }

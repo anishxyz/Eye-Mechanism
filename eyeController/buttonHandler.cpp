@@ -293,11 +293,13 @@ void posButton(Adafruit_RGBLCDShield inp) {
         if (joyBut) {
             incrCoord(true, joyX());
             incrCoord(false, joyY());
+            //posPrint(); //slows program to a crawl
         }
 
         if (joySW()) {
             Serial.println("clicked!");
             joyBut = !joyBut;
+            posPrint();
             delay(clickDelay);
             delay(clickDelay);
         }

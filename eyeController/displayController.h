@@ -44,4 +44,6 @@ void initOscRuntime();
 
 void updateOscRuntime(int r);
 
+void posPrint();
+
 #endif //EYE_MECHANISM_DISPLAYCONTROLLER_H

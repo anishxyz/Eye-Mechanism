@@ -299,3 +299,16 @@ int getPWMY() {
     return pwmY;
 }
 
+float scalePWM(int inp) {
+    float temp = inp - 330;
+    temp *= DEGMAX1;
+    temp /= 110;
+    return temp;
+}
+
+float getPWMDeg(bool xAxis) {
+    if (xAxis) {
+        return scalePWM(pwmX);
+    }
+    return scalePWM(pwmY);
+}

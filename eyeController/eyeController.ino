@@ -6,7 +6,7 @@ void setup() {
   servoInit();
   displayInit();
   jostickInit();
-  Serial.print("hello");
+  Serial.println("hello");
 
   //setPosition(0, true);
   //orbit(1, 2);
