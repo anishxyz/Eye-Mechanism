@@ -66,8 +66,8 @@ void centerAll() {
     //iterates through 6 servos and positions them at their midpoint
     for(int i = 0; i < 6; i++) {
         pwm.setPWM(i, 0, servoMid);
-        Serial.println(servoMid);
     }
+    Serial.println("All axes centered.");
     pwmX = servoMid;
     pwmY = servoMid;
 }

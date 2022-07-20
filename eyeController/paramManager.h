@@ -37,5 +37,6 @@ void decrStep(bool xAxis);
 
 int getDeg(bool xAxis);
 
+String getOscDirStr();
 
 #endif //EYE_MECHANISM_PARAMMANAGER_H

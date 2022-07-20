@@ -1,21 +1,28 @@
 #include "servoController.h"
 #include "displayController.h"
 #include "joystick.h"
+#include "cli.h"
 
 void setup() {
-  servoInit();
-  displayInit();
-  jostickInit();
-  Serial.println("hello");
+    Serial.begin(9600);
+    servoInit();
+    displayInit();
+    jostickInit();
+    cliInit();
 
-  //setPosition(0, true);
-  //orbit(1, 2);
-  //oscillate(1, 5, true);
-  //welcome();
-  homeScreen();
+    //Serial.println("hello");
+
+    //setPosition(0, true);
+    //orbit(1, 2);
+    //oscillate(1, 5, true);
+    //welcome();
+    homeScreen();
 }
 
 
-void loop() {
 
+void loop() {
+    if (Serial.available() > 0) {
+       Serial.println(Serial.read());
+    }
 }

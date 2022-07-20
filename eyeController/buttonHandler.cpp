@@ -14,13 +14,14 @@
 // delay after button clicks so no accidental "double-click"
 int clickDelay = 150;
 
-
 void homeButton(Adafruit_RGBLCDShield inp) {
     uint8_t buttons = inp.readButtons();
     boolean state = true;
 
     while (inp.readButtons() || state) {
         buttons = inp.readButtons();
+        int read = Serial.read();
+
         if (buttons & BUTTON_UP) {
             delay(clickDelay); //delay so click does not hold onto next screen
             orbitScreen();
@@ -264,24 +265,6 @@ void oscSpdButton(Adafruit_RGBLCDShield inp) {
     }
 }
 
-void posJoystick(Adafruit_RGBLCDShield inp) {
-    boolean state = true;
-    centerAll();
-
-    while (state) {
-        if (joySW()) {
-            //state = false;
-        }
-
-        Serial.println("X: " + getPWMX());
-        Serial.println("Y: " + getPWMX());
-        Serial.println();
-
-        incrCoord(true, joyX());
-        incrCoord(false, joyY());
-    }
-}
-
 void posButton(Adafruit_RGBLCDShield inp) {
     uint8_t buttons = inp.readButtons();
     bool state = true;
@@ -297,9 +280,11 @@ void posButton(Adafruit_RGBLCDShield inp) {
         }
 
         if (joySW()) {
-            Serial.println("clicked!");
+            //Serial.println("clicked!");
+            if (joyBut) {
+                posPrint();
+            }
             joyBut = !joyBut;
-            posPrint();
             delay(clickDelay);
             delay(clickDelay);
         }

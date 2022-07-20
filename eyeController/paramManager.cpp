@@ -33,6 +33,14 @@ bool getOscDir() {
     return oscDir;
 }
 
+String getOscDirStr() {
+    if (oscDir) {
+        return "x-axis";
+    } else {
+        return "y-axis";
+    }
+}
+
 void togOscDir() {
     oscDir = !oscDir;
 }

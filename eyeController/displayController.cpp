@@ -8,6 +8,7 @@
 #include "buttonHandler.h"
 #include "paramManager.h"
 #include "servoController.h"
+#include "cli.h"
 
 //Display Setup
 Adafruit_RGBLCDShield lcd = Adafruit_RGBLCDShield();
@@ -189,6 +190,7 @@ void homeScreen() {
     lcd.write(byte(2));
     lcd.print(" Pos");
 
+    cliInit();
     homeButton(lcd);
 }
 
@@ -213,6 +215,7 @@ void orbitScreen() {
     lcd.print(getRot());
 
     //initButton();
+    cliInit();
     orbitButton(lcd);
 }
 
@@ -225,6 +228,7 @@ void rotScreen() {
     lcd.print(getRot());
 
     delay(10);
+    cliInit();
     rotButton(lcd);
 }
 
@@ -264,6 +268,7 @@ void oscScreen() {
     lcd.setCursor(15, 1);
     lcd.write(getDirByte());
 
+    cliInit();
     oscButton(lcd);
 }
 
@@ -319,6 +324,7 @@ void rotSpdScreen() {
     lcd.print(" FAST");
 
     delay(10);
+    cliInit();
     rotSpdButton(lcd);
 }
 
@@ -336,6 +342,7 @@ void oscSpdScreen() {
     lcd.print(" FAST");
 
     delay(10);
+    cliInit();
     oscSpdButton(lcd);
 }
 
@@ -347,6 +354,7 @@ void numOscScreen() {
     lcd.print(getOsc());
 
     delay(10);
+    cliInit();
     numOscButton(lcd);
 }
 
@@ -363,7 +371,7 @@ void setPosScreen(boolean xAxis) {
     
     lcd.print(getDeg(xAxis)); 
     delay(10);
-    
+    cliInit();
     setPosButton(lcd, xAxis); 
 }
 
@@ -390,4 +398,5 @@ void posPrint() {
     lcd.print(getPWMDeg(true), 1);
     lcd.setCursor(12, 1);
     lcd.print(getPWMDeg(false), 1);
+    cliInit();
 }
