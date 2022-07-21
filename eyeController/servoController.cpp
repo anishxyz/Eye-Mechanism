@@ -99,65 +99,67 @@ void orbit(int ms, int rotations) {
     //initialize screen to display orbit status
     initOrbitRuntime();
 
+    //halt detection
+    int haltCt = 0;
+
     // loop to keep adjusting position in steps until appropriate
     // number of steps for given rotations is complete
-    while(currSteps < steps * rotations) {
 
-        //increase/decrease x axis in step
-        if (phaseX) {
-            pwm.setPWM(xServo, 0, currX++);
-        } else {
-            pwm.setPWM(xServo, 0, currX--);
-        }
+    for (int i = 0; i < rotations; i++) {
 
-        //increase/decrease y axis in step
-        if (phaseY) {
-            pwm.setPWM(yServo, 0, currY++);
-        } else {
-            pwm.setPWM(yServo, 0, currY--);
-        }
+        //runs a single rotation by running all 440 steps
+        for (int j = 0; j < steps; j++) {
 
-        //swaps direction when x axis limit hit
-        if (currX == SERVOMAX || currX == SERVOMIN) {
-            phaseX = !phaseX;
-        }
+            //increase/decrease x axis in step
+            if (phaseX) {
+                pwm.setPWM(xServo, 0, currX++);
+            } else {
+                pwm.setPWM(xServo, 0, currX--);
+            }
 
-        //swaps direction when y axis limit hit
-        if (currY == SERVOMAX || currY == SERVOMIN) {
-            phaseY = !phaseY;
+            //increase/decrease y axis in step
+            if (phaseY) {
+                pwm.setPWM(yServo, 0, currY++);
+            } else {
+                pwm.setPWM(yServo, 0, currY--);
+            }
+
+            //swaps direction when x axis limit hit
+            if (currX == SERVOMAX || currX == SERVOMIN) {
+                phaseX = !phaseX;
+            }
+
+            //swaps direction when y axis limit hit
+            if (currY == SERVOMAX || currY == SERVOMIN) {
+                phaseY = !phaseY;
+            }
+
+            if (haltCt == 350) {
+                if (checkHalt()) {
+                    centerAll();
+                    break;
+                }
+                haltCt = 0;
+            } else {
+                haltCt++;
+            }
+
+            pwmX = currX;
+            pwmY = currY;
+
+            //delay to maintain input speed
+            delay(ms);
         }
 
         //used to update display for curr rotation number
-        if (currSteps % steps == 0) {
-            currRot = currSteps / steps;
-            updateOrbitRuntime(currRot);
-            Serial.print(currRot);
-            Serial.print(" / ");
-            Serial.println(rotations);
-        }
-
-        // used to detect button click to auto halt
-        // checks ever 350 steps to reduce load
-        // allows for 'hold-until-halt'
-        if (currSteps % 350 == 0) {
-            if (checkHalt()) {
-                centerAll();
-                break;
-            }
-        }
-
-        pwmX = currX;
-        pwmY = currY;
-
-        //increment current step count
-        currSteps++;
-
-        //delay to maintain input speed
-        delay(ms);
+        updateOrbitRuntime(i);
+        Serial.print(i);
+        Serial.print(" / ");
+        Serial.println(rotations);
     }
-    currRot++;
-    updateOrbitRuntime(currRot);
-    Serial.print(currRot);
+
+    updateOrbitRuntime(rotations);
+    Serial.print(rotations);
     Serial.print(" / ");
     Serial.print(rotations);
     Serial.println("...Orbit Complete");
