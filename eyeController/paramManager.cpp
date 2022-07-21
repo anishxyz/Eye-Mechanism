@@ -21,6 +21,8 @@ int xStep = 4;
 int yStep = 4;
 int degreeArr[9] = {-9,-35,-25,-15,0, 15,25,35,45};
 
+bool halt = false;
+
 void incrRot(int inp) {
     rotations = rotations + inp;
 }
@@ -33,6 +35,10 @@ bool getOscDir() {
     return oscDir;
 }
 
+void setOscDir(bool inp) {
+    oscDir = inp;
+}
+
 String getOscDirStr() {
     if (oscDir) {
         return "x-axis";
@@ -43,6 +49,22 @@ String getOscDirStr() {
 
 void togOscDir() {
     oscDir = !oscDir;
+}
+
+void setHalt(bool inp) {
+    halt = inp;
+}
+
+bool getHalt() {
+    return halt;
+}
+
+void setRot(int inp) {
+    rotations = inp;
+}
+
+void setOsc(int inp) {
+    oscillations = inp;
 }
 
 int getRot() {

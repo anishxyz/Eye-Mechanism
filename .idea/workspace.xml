@@ -13,12 +13,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="reorganizing">
-      <change afterPath="$PROJECT_DIR$/eyeController/cli.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eyeController/cli.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/buttonHandler.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/buttonHandler.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/buttonHandler.h" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/buttonHandler.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/displayController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/displayController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eyeController/cli.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/cli.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eyeController/cli.h" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/cli.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eyeController/eyeController.ino" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/eyeController.ino" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eyeController/paramManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/paramManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eyeController/paramManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/paramManager.h" afterDir="false" />
@@ -100,7 +97,7 @@
       <workItem from="1657762753452" duration="4704000" />
       <workItem from="1657824814014" duration="251000" />
       <workItem from="1657825126824" duration="10423000" />
-      <workItem from="1658267160105" duration="7154000" />
+      <workItem from="1658267160105" duration="19524000" />
     </task>
     <task id="LOCAL-00001" summary="reorganizing">
       <created>1657588515792</created>

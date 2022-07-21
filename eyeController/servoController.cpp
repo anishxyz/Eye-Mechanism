@@ -133,6 +133,9 @@ void orbit(int ms, int rotations) {
         if (currSteps % steps == 0) {
             currRot = currSteps / steps;
             updateOrbitRuntime(currRot);
+            Serial.print(currRot);
+            Serial.print(" / ");
+            Serial.println(rotations);
         }
 
         // used to detect button click to auto halt
@@ -154,6 +157,12 @@ void orbit(int ms, int rotations) {
         //delay to maintain input speed
         delay(ms);
     }
+    currRot++;
+    updateOrbitRuntime(currRot);
+    Serial.print(currRot);
+    Serial.print(" / ");
+    Serial.print(rotations);
+    Serial.println("...Orbit Complete");
 }
 
 void oscillate(int ms, int oscillations, boolean input) {
@@ -239,17 +248,18 @@ void oscillate(int ms, int oscillations, boolean input) {
 
 }
 
-void backAndForth(int startPulse, int endPulse, int ms, int servoNum) {
-    for(int curr = startPulse; curr < endPulse; curr++) {
-        pwm.setPWM(servoNum, 0, curr);
-        delay(ms);
-    }
-
-    for(int curr = endPulse; curr > startPulse; curr--) {
-        pwm.setPWM(servoNum, 0, curr);
-        delay(ms);
-    }
-}
+//deprecated in favor of oscillate
+// void backAndForth(int startPulse, int endPulse, int ms, int servoNum) {
+//    for(int curr = startPulse; curr < endPulse; curr++) {
+//        pwm.setPWM(servoNum, 0, curr);
+//        delay(ms);
+//    }
+//
+//    for(int curr = endPulse; curr > startPulse; curr--) {
+//        pwm.setPWM(servoNum, 0, curr);
+//        delay(ms);
+//    }
+//}
 
 int scaleDeg(int deg) {
   int temp = (deg * degFactor1) + 330;

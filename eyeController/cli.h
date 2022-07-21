@@ -7,4 +7,6 @@
 
 void cliInit();
 
+void cliLoop();
+
 #endif //EYE_MECHANISM_CLI_H

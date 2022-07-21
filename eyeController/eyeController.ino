@@ -8,7 +8,8 @@ void setup() {
     servoInit();
     displayInit();
     jostickInit();
-    cliInit();
+    //centerAll();
+    //cliInit();
 
     //Serial.println("hello");
 
@@ -16,13 +17,11 @@ void setup() {
     //orbit(1, 2);
     //oscillate(1, 5, true);
     //welcome();
-    homeScreen();
+    //homeScreen();
 }
 
 
 
 void loop() {
-    if (Serial.available() > 0) {
-       Serial.println(Serial.read());
-    }
+    cliLoop();
 }

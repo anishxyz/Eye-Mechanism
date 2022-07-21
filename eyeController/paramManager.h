@@ -7,15 +7,25 @@
 
 void incrRot(int inp);
 
+void setRot(int inp);
+
+void setOsc(int inp);
+
 void incrOsc(int inp);
 
 bool getOscDir();
+
+void setOscDir(bool inp);
 
 void togOscDir();
 
 int getRot();
 
 int getOsc();
+
+void setHalt(bool inp);
+
+bool getHalt();
 
 void setRotSpd(int inp);
 

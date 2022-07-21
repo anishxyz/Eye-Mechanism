@@ -10,6 +10,8 @@
 #include "displayController.h"
 #include "paramManager.h"
 
+const unsigned int MAX_MESSAGE_LENGTH = 5;
+
 void cliInit() {
     Serial.println();
     Serial.println("---------------------------------------------");
@@ -34,4 +36,55 @@ void cliInit() {
     Serial.println(getPWMDeg(false));
     Serial.println("---------------------------------------------");
     Serial.println();
+}
+
+//needed commands
+// orbi XX XX
+// oscx XX XX
+// oscy XX XX
+// setx X
+// sety X
+// halt
+// home
+
+void cliLoop() {
+    String str = "";
+
+    while(Serial.available() > 0) {
+        str = Serial.readStringUntil('\n');
+    }
+
+    if (str.substring(0,4).equals("cent")) {
+        centerAll();
+    } else if (str.substring(0,4).equals("orbi")) {
+        int speed = str.substring(5,6).toInt();
+        int rot = str.substring(7,12).toInt();
+        setRotSpd(speed);
+        setRot(rot);
+        Serial.println("Orbiting... | Speed: " + getRotSpeedLvl() + " | Rotations: " + getRot());
+        orbit(getRotSpd(), getRot());
+    } else if (str.substring(0,4).equals("oscx")) {
+        int speed = str.substring(5,6).toInt();
+        int osc = str.substring(7,12).toInt();
+        setOscDir(true);
+        setOscSpd(speed);
+        setOsc(osc);
+        Serial.println("Oscillating... | Speed: " + getOscSpeedLvl() + " | Oscillations: " + getOsc()
+            + " | Direction: " + getOscDirStr());
+        oscillate(getOscSpd(), getOsc(), true);
+    } else if (str.substring(0,4).equals("oscy")) {
+        int speed = str.substring(5,6).toInt();
+        int osc = str.substring(7,12).toInt();
+        setOscDir(false);
+        setOscSpd(speed);
+        setOsc(osc);
+        Serial.println("Oscillating... | Speed: " + getOscSpeedLvl() + " | Oscillations: " + getOsc()
+            + " | Direction: " + getOscDirStr());
+        oscillate(getOscSpd(), getOsc(), false);
+    }
+
+    if (!str.equals("")) {
+        //Serial.println(str);
+    }
+
 }
