@@ -239,62 +239,7 @@ void oscillate(int ms, int oscillations, boolean input) {
         Serial.print(" / ");
         Serial.println(oscillations);
     }
-
     Serial.println("Oscillate Complete.");
-
-
-
-
-
-
-
-
-//    // loop to keep adjusting position in steps until appropriate
-//    // number of steps for given oscillations is complete
-//    while(currSteps < steps * oscillations) {
-//
-//        //increase/decrease axis in step
-//        if (phase) {
-//            pwm.setPWM(axis, 0, currPos++);
-//        } else {
-//            pwm.setPWM(axis, 0, currPos--);
-//        }
-//
-//        //swaps direction when axis limit hit
-//        if (currPos == SERVOMAX || currPos == SERVOMIN) {
-//            phase = !phase;
-//        }
-//
-//        //used to update display for curr rotation number
-//        if (currSteps % steps == 0) {
-//            currOsc = currSteps / steps;
-//            updateOscRuntime(currOsc);
-//            Serial.print(currOsc);
-//            Serial.print(" / ");
-//            Serial.println(oscillations);
-//        }
-//
-//        // used to detect button click to auto halt
-//        // checks ever 350 steps to reduce load
-//        // allows for 'hold-until-halt'
-//        if (currSteps % 350 == 0) {
-//            if (checkHalt()) {
-//                centerAll();
-//                break;
-//            }
-//        }
-//
-//        if (input) {
-//            pwmX = currPos;
-//        } else {
-//            pwmY = currPos;
-//        }
-//        //increment current step count
-//        currSteps++;
-//
-//        //delay to maintain input speed
-//        delay(ms);
-//    }
 }
 
 //deprecated in favor of oscillate
