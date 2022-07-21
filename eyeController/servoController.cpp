@@ -221,6 +221,9 @@ void oscillate(int ms, int oscillations, boolean input) {
         if (currSteps % steps == 0) {
             currOsc = currSteps / steps;
             updateOscRuntime(currOsc);
+            Serial.print(currOsc);
+            Serial.print(" / ");
+            Serial.println(oscillations);
         }
 
         // used to detect button click to auto halt
@@ -244,7 +247,12 @@ void oscillate(int ms, int oscillations, boolean input) {
         //delay to maintain input speed
         delay(ms);
     }
-
+    currOsc++;
+    updateOrbitRuntime(currOsc);
+    Serial.print(currOsc);
+    Serial.print(" / ");
+    Serial.print(oscillations);
+    Serial.println("...Oscillate Complete");
 
 }
 

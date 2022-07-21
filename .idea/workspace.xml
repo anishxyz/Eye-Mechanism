@@ -12,13 +12,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="reorganizing">
+    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="cli can read input&#10;cli inputs for center, orbit, osc (x and y) functional&#10;cli live updates for move functions&#10;new param manager functions for cli input">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/cli.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/cli.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/cli.h" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/cli.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/eyeController.ino" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/eyeController.ino" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/paramManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/paramManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/paramManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/paramManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eyeController/servoController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/servoController.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +92,7 @@
       <workItem from="1657762753452" duration="4704000" />
       <workItem from="1657824814014" duration="251000" />
       <workItem from="1657825126824" duration="10423000" />
-      <workItem from="1658267160105" duration="19524000" />
+      <workItem from="1658267160105" duration="20558000" />
     </task>
     <task id="LOCAL-00001" summary="reorganizing">
       <created>1657588515792</created>
@@ -106,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657588515792</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="cli can read input&#10;cli inputs for center, orbit, osc (x and y) functional&#10;cli live updates for move functions&#10;new param manager functions for cli input">
+      <created>1658367021745</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1658367021745</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,7 +127,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="reorganizing" />
-    <option name="LAST_COMMIT_MESSAGE" value="reorganizing" />
+    <MESSAGE value="cli can read input&#10;cli inputs for center, orbit, osc (x and y) functional&#10;cli live updates for move functions&#10;new param manager functions for cli input" />
+    <option name="LAST_COMMIT_MESSAGE" value="cli can read input&#10;cli inputs for center, orbit, osc (x and y) functional&#10;cli live updates for move functions&#10;new param manager functions for cli input" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
