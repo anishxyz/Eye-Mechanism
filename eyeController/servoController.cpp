@@ -105,7 +105,7 @@ void orbit(int ms, int rotations) {
     // loop to keep adjusting position in steps until appropriate
     // number of steps for given rotations is complete
 
-    for (int i = 0; i < rotations; i++) {
+    for (int i = 1; i <= rotations; i++) {
 
         //runs a single rotation by running all 440 steps
         for (int j = 0; j < steps; j++) {
@@ -157,12 +157,7 @@ void orbit(int ms, int rotations) {
         Serial.print(" / ");
         Serial.println(rotations);
     }
-
-    updateOrbitRuntime(rotations);
-    Serial.print(rotations);
-    Serial.print(" / ");
-    Serial.print(rotations);
-    Serial.println("...Orbit Complete");
+    Serial.println("Orbit Complete.");
 }
 
 void oscillate(int ms, int oscillations, boolean input) {
@@ -195,62 +190,111 @@ void oscillate(int ms, int oscillations, boolean input) {
     //number of steps complete
     int currSteps = 0;
 
+    //halt detection
+    int haltCt = 0;
+
     //number of oscillations completed
     int currOsc = 0;
 
-    // loop to keep adjusting position in steps until appropriate
-    // number of steps for given oscillations is complete
-    while(currSteps < steps * oscillations) {
 
-        //increase/decrease axis in step
-        if (phase) {
-            pwm.setPWM(axis, 0, currPos++);
-        } else {
-            pwm.setPWM(axis, 0, currPos--);
-        }
+    for (int i = 1; i <= oscillations; i++) {
 
-        //swaps direction when axis limit hit
-        if (currPos == SERVOMAX || currPos == SERVOMIN) {
-            phase = !phase;
-        }
+        for (int j = 0; j < steps; j++) {
 
-        //used to update display for curr rotation number
-        if (currSteps % steps == 0) {
-            currOsc = currSteps / steps;
-            updateOscRuntime(currOsc);
-            Serial.print(currOsc);
-            Serial.print(" / ");
-            Serial.println(oscillations);
-        }
-
-        // used to detect button click to auto halt
-        // checks ever 350 steps to reduce load
-        // allows for 'hold-until-halt'
-        if (currSteps % 350 == 0) {
-            if (checkHalt()) {
-                centerAll();
-                break;
+            //increase/decrease axis in step
+            if (phase) {
+                pwm.setPWM(axis, 0, currPos++);
+            } else {
+                pwm.setPWM(axis, 0, currPos--);
             }
-        }
 
-        if (input) {
-            pwmX = currPos;
-        } else {
-            pwmY = currPos;
-        }
-        //increment current step count
-        currSteps++;
+            //swaps direction when axis limit hit
+            if (currPos == SERVOMAX || currPos == SERVOMIN) {
+                phase = !phase;
+            }
 
-        //delay to maintain input speed
-        delay(ms);
+            if (haltCt == 350) {
+                if (checkHalt()) {
+                    centerAll();
+                    break;
+                }
+                haltCt = 0;
+            } else {
+                haltCt++;
+            }
+
+            if (input) {
+                pwmX = currPos;
+            } else {
+                pwmY = currPos;
+            }
+
+            //delay to maintain input speed
+            delay(ms);
+
+        }
+        //used to update display for curr rotation number
+        updateOscRuntime(i);
+        Serial.print(i);
+        Serial.print(" / ");
+        Serial.println(oscillations);
     }
-    currOsc++;
-    updateOrbitRuntime(currOsc);
-    Serial.print(currOsc);
-    Serial.print(" / ");
-    Serial.print(oscillations);
-    Serial.println("...Oscillate Complete");
 
+    Serial.println("Oscillate Complete.");
+
+
+
+
+
+
+
+
+//    // loop to keep adjusting position in steps until appropriate
+//    // number of steps for given oscillations is complete
+//    while(currSteps < steps * oscillations) {
+//
+//        //increase/decrease axis in step
+//        if (phase) {
+//            pwm.setPWM(axis, 0, currPos++);
+//        } else {
+//            pwm.setPWM(axis, 0, currPos--);
+//        }
+//
+//        //swaps direction when axis limit hit
+//        if (currPos == SERVOMAX || currPos == SERVOMIN) {
+//            phase = !phase;
+//        }
+//
+//        //used to update display for curr rotation number
+//        if (currSteps % steps == 0) {
+//            currOsc = currSteps / steps;
+//            updateOscRuntime(currOsc);
+//            Serial.print(currOsc);
+//            Serial.print(" / ");
+//            Serial.println(oscillations);
+//        }
+//
+//        // used to detect button click to auto halt
+//        // checks ever 350 steps to reduce load
+//        // allows for 'hold-until-halt'
+//        if (currSteps % 350 == 0) {
+//            if (checkHalt()) {
+//                centerAll();
+//                break;
+//            }
+//        }
+//
+//        if (input) {
+//            pwmX = currPos;
+//        } else {
+//            pwmY = currPos;
+//        }
+//        //increment current step count
+//        currSteps++;
+//
+//        //delay to maintain input speed
+//        delay(ms);
+//    }
 }
 
 //deprecated in favor of oscillate
