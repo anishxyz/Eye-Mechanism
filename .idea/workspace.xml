@@ -12,8 +12,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="orbit now support 2^15 rotation max with new structure">
+    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="oscillate now supports 2^15 rotations with new restructuring">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eyeController/eyeController.ino" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/eyeController.ino" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eyeController/servoController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/servoController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eyeController/servoController.h" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/servoController.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +94,7 @@
       <workItem from="1657762753452" duration="4704000" />
       <workItem from="1657824814014" duration="251000" />
       <workItem from="1657825126824" duration="10423000" />
-      <workItem from="1658267160105" duration="26105000" />
+      <workItem from="1658267160105" duration="27567000" />
     </task>
     <task id="LOCAL-00001" summary="reorganizing">
       <created>1657588515792</created>
@@ -128,7 +131,21 @@
       <option name="project" value="LOCAL" />
       <updated>1658441264002</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="oscillate now supports 2^15 rotations with new restructuring">
+      <created>1658441818057</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1658441818057</updated>
+    </task>
+    <task id="LOCAL-00007" summary="oscillate now supports 2^15 rotations with new restructuring">
+      <created>1658441827046</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1658441827046</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,7 +168,8 @@
     <MESSAGE value="debug max rotations/oscillations = 72 b/c 16 bit cap, need to find new method of managing loop..." />
     <MESSAGE value="cli updates" />
     <MESSAGE value="orbit now support 2^15 rotation max with new structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="orbit now support 2^15 rotation max with new structure" />
+    <MESSAGE value="oscillate now supports 2^15 rotations with new restructuring" />
+    <option name="LAST_COMMIT_MESSAGE" value="oscillate now supports 2^15 rotations with new restructuring" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

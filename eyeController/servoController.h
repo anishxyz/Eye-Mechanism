@@ -43,7 +43,7 @@ void oscillate(int ms, int oscillations, boolean input);
 
 void backAndForth(int startPulse, int endPulse, int ms, int servoNum);
 
-void setPosition(int deg, boolean servoNum);
+void setPosition(float deg, boolean servoNum);
 
 void incrCoord(bool axis, int steps);
 

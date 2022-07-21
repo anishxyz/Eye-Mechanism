@@ -28,8 +28,8 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 int servoMid = (SERVOMAX+SERVOMIN)/2;
 #define DEGMAX1  35 //max deg travel in x from origin
 #define DEGMAX2  35 //max deg travel in y from origin
-int degFactor1 = 110 / DEGMAX1;
-int degFactor2 = 110 / DEGMAX2;
+float degFactor1 = 110 / DEGMAX1;
+float degFactor2 = 110 / DEGMAX2;
 int steps = (SERVOMAX - SERVOMIN) * 2;
 
 int pwmX = 330;
@@ -136,6 +136,7 @@ void orbit(int ms, int rotations) {
 
             if (haltCt == 350) {
                 if (checkHalt()) {
+                    Serial.println("Halted");
                     centerAll();
                     break;
                 }
@@ -215,6 +216,7 @@ void oscillate(int ms, int oscillations, boolean input) {
 
             if (haltCt == 350) {
                 if (checkHalt()) {
+                    Serial.println("Halted");
                     centerAll();
                     break;
                 }
@@ -255,7 +257,7 @@ void oscillate(int ms, int oscillations, boolean input) {
 //    }
 //}
 
-int scaleDeg(int deg) {
+int scaleDeg(float deg) {
   int temp = (deg * degFactor1) + 330;
   if (temp > SERVOMAX) {
     return SERVOMAX;
@@ -266,7 +268,7 @@ int scaleDeg(int deg) {
   return temp;
 }
 
-void setPosition(int deg, boolean xAxis) {
+void setPosition(float deg, bool xAxis) {
     if (xAxis) {
       pwm.setPWM(0, 0, scaleDeg(deg));
       pwmX = scaleDeg(deg);
@@ -276,15 +278,15 @@ void setPosition(int deg, boolean xAxis) {
     }
 }
 
-void setPositionAcc(float deg, boolean xAxis) {
-    if (xAxis) {
-        pwm.setPWM(0, 0, scaleDeg(deg));
-        pwmX = scaleDeg(deg);
-    } else {
-        pwm.setPWM(1, 0, scaleDeg(deg));
-        pwmY = scaleDeg(deg);
-    }
-}
+//void setPositionAcc(float deg, boolean xAxis) {
+//    if (xAxis) {
+//        pwm.setPWM(0, 0, scaleDeg(deg));
+//        pwmX = scaleDeg(deg);
+//    } else {
+//        pwm.setPWM(1, 0, scaleDeg(deg));
+//        pwmY = scaleDeg(deg);
+//    }
+//}
 
 int scalePWM(bool xAxis) {
     if (xAxis) {
