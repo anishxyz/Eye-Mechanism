@@ -86,5 +86,4 @@ void cliLoop() {
     if (!str.equals("")) {
         //Serial.println(str);
     }
-
 }

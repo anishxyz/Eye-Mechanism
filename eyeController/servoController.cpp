@@ -30,6 +30,7 @@ int servoMid = (SERVOMAX+SERVOMIN)/2;
 #define DEGMAX2  35 //max deg travel in y from origin
 int degFactor1 = 110 / DEGMAX1;
 int degFactor2 = 110 / DEGMAX2;
+int steps = (SERVOMAX - SERVOMIN) * 2;
 
 int pwmX = 330;
 int pwmY = 330;
@@ -88,9 +89,6 @@ void orbit(int ms, int rotations) {
     //false: decreasing
     boolean phaseX = true;
     boolean phaseY = false;
-
-    //calculate number of steps per rotation
-    int steps = (SERVOMAX - SERVOMIN) * 2;
 
     //number of steps complete
     int currSteps = 0;
@@ -192,9 +190,6 @@ void oscillate(int ms, int oscillations, boolean input) {
     pwm.setPWM(xServo, 0, currPos);
     pwm.setPWM(yServo, 0, currPos);
 
-    //establish steps that represent a single oscillation
-    int steps = (SERVOMAX - SERVOMIN) * 2;
-
     //number of steps complete
     int currSteps = 0;
 
@@ -287,6 +282,16 @@ void setPosition(int deg, boolean xAxis) {
     } else {
       pwm.setPWM(1, 0, scaleDeg(deg));
       pwmY = scaleDeg(deg);
+    }
+}
+
+void setPositionAcc(float deg, boolean xAxis) {
+    if (xAxis) {
+        pwm.setPWM(0, 0, scaleDeg(deg));
+        pwmX = scaleDeg(deg);
+    } else {
+        pwm.setPWM(1, 0, scaleDeg(deg));
+        pwmY = scaleDeg(deg);
     }
 }
 
