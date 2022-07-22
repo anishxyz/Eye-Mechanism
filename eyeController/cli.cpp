@@ -93,9 +93,21 @@ void cliLoop() {
         Serial.print("Positioning....Y Position set to ");
         Serial.print(deg);
         Serial.println(" degrees");
-    }
-
-    if (!str.equals("")) {
-        //Serial.println(str);
+    } else if (str.substring(0,4).equals("movx")) {
+        float deg = str.substring(5,10).toFloat();
+        movePosition(deg, true);
+        Serial.print("Positioning....X Position set to ");
+        Serial.print(getPWMDeg(true));
+        Serial.println(" degrees");
+    } else if (str.substring(0,4).equals("movy")) {
+        float deg = str.substring(5,10).toFloat();
+        movePosition(deg, false);
+        Serial.print("Positioning....Y Position set to ");
+        Serial.print(getPWMDeg(false));
+        Serial.println(" degrees");
+    } else if (!str.equals("")) {
+        Serial.print(str);
+        Serial.println(" is not a valid command.");
+        Serial.println("To see a valid list of commands, type -help")
     }
 }

@@ -290,7 +290,7 @@ void movePosition(float deg, bool xAxis) {
     if (tempPWM > SERVOMAX) {
         tempPWM = SERVOMAX;
     }
-    if (temp < SERVOMIN) {
+    if (tempPWM < SERVOMIN) {
         tempPWM = SERVOMIN;
     }
 

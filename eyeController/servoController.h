@@ -53,4 +53,6 @@ int getPWMY();
 
 float getPWMDeg(bool xAxis);
 
+void movePosition(float deg, bool xAxis);
+
 #endif //EYE_MECHANISM_SERVOCONTROLLER_H
