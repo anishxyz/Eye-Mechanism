@@ -278,6 +278,33 @@ void setPosition(float deg, bool xAxis) {
     }
 }
 
+void movePosition(float deg, bool xAxis) {
+    int tempPWM = scaleDeg(deg);
+
+    if (xAxis) {
+        tempPWM += pwmX;
+    } else {
+        tempPWM += pwmY;
+    }
+
+    if (tempPWM > SERVOMAX) {
+        tempPWM = SERVOMAX;
+    }
+    if (temp < SERVOMIN) {
+        tempPWM = SERVOMIN;
+    }
+
+    if (xAxis) {
+        pwmX = tempPWM;
+        pwm.setPWM(0, 0, pwmX);
+    } else {
+        pwmY = tempPWM;
+        pwm.setPWM(1, 0, pwmY);
+    }
+
+
+}
+
 //void setPositionAcc(float deg, boolean xAxis) {
 //    if (xAxis) {
 //        pwm.setPWM(0, 0, scaleDeg(deg));
