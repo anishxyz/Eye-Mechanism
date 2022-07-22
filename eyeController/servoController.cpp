@@ -279,7 +279,7 @@ void setPosition(float deg, bool xAxis) {
 }
 
 void movePosition(float deg, bool xAxis) {
-    int tempPWM = scaleDeg(deg);
+    int tempPWM = scaleDeg(deg) - 330;
 
     if (xAxis) {
         tempPWM += pwmX;
@@ -301,8 +301,6 @@ void movePosition(float deg, bool xAxis) {
         pwmY = tempPWM;
         pwm.setPWM(1, 0, pwmY);
     }
-
-
 }
 
 //void setPositionAcc(float deg, boolean xAxis) {
