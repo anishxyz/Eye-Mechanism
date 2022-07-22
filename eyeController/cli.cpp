@@ -39,13 +39,14 @@ void cliInit() {
 }
 
 //needed commands
-// orbi XX XX
-// oscx XX XX
-// oscy XX XX
-// setx X
-// sety X
+// orbi XX XX done
+// oscx XX XX done
+// oscy XX XX done
+// setx X done
+// sety X done
 // halt
-// cent
+// cent done
+//--help
 
 void cliLoop() {
     String str = "";
@@ -116,4 +117,17 @@ void cliLoop() {
         Serial.println(" is not a valid command.");
         Serial.println("To see a valid list of commands, type -help");
     }
+}
+
+bool serHalt() {
+    if (Serial.peek() == 'h') {
+        String curr;
+        while(Serial.available() > 0) {
+            curr = Serial.readStringUntil('\n');
+        }
+        if (curr.equals("halt")) {
+            return true;
+        }
+    }
+    return false;
 }

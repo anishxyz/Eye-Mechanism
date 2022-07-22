@@ -6,6 +6,7 @@
 #include <Adafruit_PWMServoDriver.h>
 #include "displayController.h"
 #include "paramManager.h"
+#include "cli.h"
 
 
 //Servo Setup
@@ -135,10 +136,10 @@ void orbit(int ms, int rotations) {
             }
 
             if (haltCt == 350) {
-                if (checkHalt()) {
+                if (checkHalt() || serHalt()) {
                     Serial.println("Halted");
                     centerAll();
-                    break;
+                    return;
                 }
                 haltCt = 0;
             } else {
@@ -215,10 +216,10 @@ void oscillate(int ms, int oscillations, boolean input) {
             }
 
             if (haltCt == 350) {
-                if (checkHalt()) {
+                if (checkHalt() || serHalt()) {
                     Serial.println("Halted");
                     centerAll();
-                    break;
+                    return;
                 }
                 haltCt = 0;
             } else {

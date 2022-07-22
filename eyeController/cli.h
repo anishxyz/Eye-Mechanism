@@ -9,4 +9,6 @@ void cliInit();
 
 void cliLoop();
 
+bool serHalt();
+
 #endif //EYE_MECHANISM_CLI_H

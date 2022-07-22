@@ -233,6 +233,7 @@ void rotScreen() {
 }
 
 void initOrbitRuntime() {
+    lcd.clear();
     lcd.setCursor(0,0);
     lcd.print("Orbit Running...");
     lcd.setCursor(0,1);
@@ -273,6 +274,7 @@ void oscScreen() {
 }
 
 void initOscRuntime() {
+    lcd.clear();
     lcd.setCursor(0,0);
     lcd.print("Oscil Running...");
     lcd.setCursor(0,1);
