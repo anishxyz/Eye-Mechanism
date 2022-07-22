@@ -342,8 +342,7 @@ int getPWMY() {
 
 float scalePWM(int inp) {
     float temp = inp - 330;
-    temp *= DEGMAX1;
-    temp /= 110;
+    temp /= degFactor1;
     return temp;
 }
 

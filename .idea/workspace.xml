@@ -12,12 +12,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="adjusted relative position functionality to accept negative degrees">
+    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="added move position to cli commands -- movx and movy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eyeController/cli.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/cli.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/eyeController.ino" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/eyeController.ino" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eyeController/servoController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/servoController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/servoController.h" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/servoController.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +134,7 @@
       <workItem from="1657762753452" duration="4704000" />
       <workItem from="1657824814014" duration="251000" />
       <workItem from="1657825126824" duration="10423000" />
-      <workItem from="1658267160105" duration="31648000" />
+      <workItem from="1658267160105" duration="32503000" />
     </task>
     <task id="LOCAL-00001" summary="reorganizing">
       <created>1657588515792</created>
@@ -215,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658471247159</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="added move position to cli commands -- movx and movy">
+      <created>1658525386243</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1658525386243</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,7 +248,8 @@
     <MESSAGE value="untested position cli commands: setx &amp; sety" />
     <MESSAGE value="untested position cli commands: setx &amp; sety\&#10;added move relative functionality -- movePosition" />
     <MESSAGE value="adjusted relative position functionality to accept negative degrees" />
-    <option name="LAST_COMMIT_MESSAGE" value="adjusted relative position functionality to accept negative degrees" />
+    <MESSAGE value="added move position to cli commands -- movx and movy" />
+    <option name="LAST_COMMIT_MESSAGE" value="added move position to cli commands -- movx and movy" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
