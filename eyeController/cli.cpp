@@ -81,6 +81,18 @@ void cliLoop() {
         Serial.println("Oscillating... | Speed: " + getOscSpeedLvl() + " | Oscillations: " + getOsc()
             + " | Direction: " + getOscDirStr());
         oscillate(getOscSpd(), getOsc(), false);
+    } else if (str.substring(0,4).equals("setx")) {
+        float deg = str.substring(5,10).toFloat();
+        setPosition(deg, true);
+        Serial.print("Positioning....X Position set to ");
+        Serial.print(deg);
+        Serial.println(" degrees");
+    } else if (str.substring(0,4).equals("sety")) {
+        float deg = str.substring(5,10).toFloat();
+        setPosition(deg, false);
+        Serial.print("Positioning....Y Position set to ");
+        Serial.print(deg);
+        Serial.println(" degrees");
     }
 
     if (!str.equals("")) {

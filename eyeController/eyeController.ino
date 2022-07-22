@@ -17,11 +17,11 @@ void setup() {
     //orbit(1, 2);
     //oscillate(1, 5, true);
     //welcome();
-    homeScreen();
+    //homeScreen();
 }
 
 
 
 void loop() {
-    //cliLoop();
+    cliLoop();
 }
