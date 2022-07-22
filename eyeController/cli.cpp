@@ -45,7 +45,7 @@ void cliInit() {
 // setx X
 // sety X
 // halt
-// home
+// cent
 
 void cliLoop() {
     String str = "";
