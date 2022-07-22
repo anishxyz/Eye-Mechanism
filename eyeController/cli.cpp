@@ -55,67 +55,70 @@ void cliLoop() {
         str = Serial.readStringUntil('\n');
     }
 
-    if (str.substring(0,5).equals("cent ")) {
-        centerAll();
-    } else if (str.substring(0,5).equals("orbi ")) {
-        int speed = str.substring(5,6).toInt();
-        int rot = str.substring(7,12).toInt();
-        setRotSpd(speed);
-        setRot(rot);
-        Serial.println("Orbiting... | Speed: " + getRotSpeedLvl() + " | Rotations: " + getRot());
-        orbit(getRotSpd(), getRot());
-    } else if (str.substring(0,5).equals("oscx ")) {
-        int speed = str.substring(5,6).toInt();
-        int osc = str.substring(7,12).toInt();
-        setOscDir(true);
-        setOscSpd(speed);
-        setOsc(osc);
-        Serial.println("Oscillating... | Speed: " + getOscSpeedLvl() + " | Oscillations: " + getOsc()
-            + " | Direction: " + getOscDirStr());
-        oscillate(getOscSpd(), getOsc(), true);
-    } else if (str.substring(0,5).equals("oscy ")) {
-        int speed = str.substring(5,6).toInt();
-        int osc = str.substring(7,12).toInt();
-        setOscDir(false);
-        setOscSpd(speed);
-        setOsc(osc);
-        Serial.println("Oscillating... | Speed: " + getOscSpeedLvl() + " | Oscillations: " + getOsc()
-            + " | Direction: " + getOscDirStr());
-        oscillate(getOscSpd(), getOsc(), false);
-    } else if (str.substring(0,5).equals("setx ")) {
-        float deg = str.substring(5,10).toFloat();
-        setPosition(deg, true);
-        Serial.print("Positioning....X Position set to ");
-        Serial.print(getPWMDeg(true));
-        Serial.println(" degrees");
-    } else if (str.substring(0,5).equals("sety ")) {
-        float deg = str.substring(5,10).toFloat();
-        setPosition(deg, false);
-        Serial.print("Positioning....Y Position set to ");
-        Serial.print(getPWMDeg(false));
-        Serial.println(" degrees");
-    } else if (str.substring(0,5).equals("movx ")) {
-        float deg = str.substring(5,10).toFloat();
-        movePosition(deg, true);
-        Serial.print("Positioning....X Position set to ");
-        Serial.print(getPWMDeg(true));
-        Serial.println(" degrees");
-    } else if (str.substring(0,5).equals("movy ")) {
-        float deg = str.substring(5,10).toFloat();
-        movePosition(deg, false);
-        Serial.print("Positioning....Y Position set to ");
-        Serial.print(getPWMDeg(false));
-        Serial.println(" degrees");
-    } else if (str.substring(0,5).equals("anish")) {
-        Serial.println("Made with <3 by Anish Agrawal");
-        Serial.println("Dancing...");
-        orbit(0, 2);
-        oscillate(0, 2, true);
-        oscillate(0, 2, false);
-    } else if (!str.equals("")) {
-        Serial.print(str);
-        Serial.println(" is not a valid command.");
-        Serial.println("To see a valid list of commands, type -help");
+    if (!str.equals("")) {
+        if (str.substring(0, 4).equals("cent")) {
+            centerAll();
+        } else if (str.substring(0, 5).equals("orbi ")) {
+            int speed = str.substring(5, 6).toInt();
+            int rot = str.substring(7, 12).toInt();
+            setRotSpd(speed);
+            setRot(rot);
+            Serial.println("Orbiting... | Speed: " + getRotSpeedLvl() + " | Rotations: " + getRot());
+            orbit(getRotSpd(), getRot());
+        } else if (str.substring(0, 5).equals("oscx ")) {
+            int speed = str.substring(5, 6).toInt();
+            int osc = str.substring(7, 12).toInt();
+            setOscDir(true);
+            setOscSpd(speed);
+            setOsc(osc);
+            Serial.println("Oscillating... | Speed: " + getOscSpeedLvl() + " | Oscillations: " + getOsc()
+                           + " | Direction: " + getOscDirStr());
+            oscillate(getOscSpd(), getOsc(), true);
+        } else if (str.substring(0, 5).equals("oscy ")) {
+            int speed = str.substring(5, 6).toInt();
+            int osc = str.substring(7, 12).toInt();
+            setOscDir(false);
+            setOscSpd(speed);
+            setOsc(osc);
+            Serial.println("Oscillating... | Speed: " + getOscSpeedLvl() + " | Oscillations: " + getOsc()
+                           + " | Direction: " + getOscDirStr());
+            oscillate(getOscSpd(), getOsc(), false);
+        } else if (str.substring(0, 5).equals("setx ")) {
+            float deg = str.substring(5, 10).toFloat();
+            setPosition(deg, true);
+            Serial.print("Positioning....X Position set to ");
+            Serial.print(getPWMDeg(true));
+            Serial.println(" degrees");
+        } else if (str.substring(0, 5).equals("sety ")) {
+            float deg = str.substring(5, 10).toFloat();
+            setPosition(deg, false);
+            Serial.print("Positioning....Y Position set to ");
+            Serial.print(getPWMDeg(false));
+            Serial.println(" degrees");
+        } else if (str.substring(0, 5).equals("movx ")) {
+            float deg = str.substring(5, 10).toFloat();
+            movePosition(deg, true);
+            Serial.print("Positioning....X Position set to ");
+            Serial.print(getPWMDeg(true));
+            Serial.println(" degrees");
+        } else if (str.substring(0, 5).equals("movy ")) {
+            float deg = str.substring(5, 10).toFloat();
+            movePosition(deg, false);
+            Serial.print("Positioning....Y Position set to ");
+            Serial.print(getPWMDeg(false));
+            Serial.println(" degrees");
+        } else if (str.substring(0, 5).equals("anish")) {
+            Serial.println("Made with <3 by Anish Agrawal");
+            Serial.println("Dancing...");
+            orbit(0, 2);
+            oscillate(0, 2, true);
+            oscillate(0, 2, false);
+        } else {
+            Serial.print(str);
+            Serial.println(" is not a valid command.");
+            Serial.println("To see a valid list of commands, type -help");
+        }
+        //homeScreen();
     }
 }
 

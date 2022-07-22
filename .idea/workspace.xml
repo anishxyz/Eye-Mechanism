@@ -12,10 +12,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="Resolved bounding issue to true span is +/- is 36.67 deg. &#10;Added easter-egg ;)">
+    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eyeController/buttonHandler.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/buttonHandler.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eyeController/cli.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/cli.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/cli.h" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/cli.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eyeController/eyeController.ino" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/eyeController.ino" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eyeController/servoController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/servoController.cpp" afterDir="false" />
     </list>
@@ -136,7 +137,7 @@
       <workItem from="1657762753452" duration="4704000" />
       <workItem from="1657824814014" duration="251000" />
       <workItem from="1657825126824" duration="10423000" />
-      <workItem from="1658267160105" duration="34064000" />
+      <workItem from="1658267160105" duration="35917000" />
     </task>
     <task id="LOCAL-00001" summary="reorganizing">
       <created>1657588515792</created>
@@ -236,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658526755117</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update">
+      <created>1658527979322</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1658527979322</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +274,8 @@
     <MESSAGE value="adjusted relative position functionality to accept negative degrees" />
     <MESSAGE value="added move position to cli commands -- movx and movy" />
     <MESSAGE value="Resolved bounding issue to true span is +/- is 36.67 deg. &#10;Added easter-egg ;)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Resolved bounding issue to true span is +/- is 36.67 deg. &#10;Added easter-egg ;)" />
+    <MESSAGE value="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update" />
+    <option name="LAST_COMMIT_MESSAGE" value="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

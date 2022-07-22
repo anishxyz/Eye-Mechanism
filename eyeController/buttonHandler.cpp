@@ -10,6 +10,7 @@
 #include "displayController.h"
 #include "paramManager.h"
 #include "joystick.h"
+#include "cli.h"
 
 // delay after button clicks so no accidental "double-click"
 int clickDelay = 150;
@@ -19,6 +20,7 @@ void homeButton(Adafruit_RGBLCDShield inp) {
     boolean state = true;
 
     while (inp.readButtons() || state) {
+        cliLoop();
         buttons = inp.readButtons();
         int read = Serial.read();
 

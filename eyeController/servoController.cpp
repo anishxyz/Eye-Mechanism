@@ -136,9 +136,15 @@ void orbit(int ms, int rotations) {
             }
 
             if (haltCt == 350) {
-                if (checkHalt() || serHalt()) {
-                    Serial.println("Halted");
+                if (checkHalt()) {
+                    Serial.println("Halted.");
                     centerAll();
+                    return;
+                }
+                if (serHalt()) {
+                    Serial.println("Halted.");
+                    centerAll();
+                    homeScreen();
                     return;
                 }
                 haltCt = 0;
@@ -217,8 +223,14 @@ void oscillate(int ms, int oscillations, boolean input) {
 
             if (haltCt == 350) {
                 if (checkHalt() || serHalt()) {
-                    Serial.println("Halted");
+                    Serial.println("Halted.");
                     centerAll();
+                    return;
+                }
+                if (serHalt()) {
+                    Serial.println("Halted.");
+                    centerAll();
+                    homeScreen();
                     return;
                 }
                 haltCt = 0;
