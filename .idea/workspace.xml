@@ -13,12 +13,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/buttonHandler.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/buttonHandler.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eyeController/cli.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/cli.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eyeController/eyeController.ino" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/eyeController.ino" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/servoController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/servoController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/serial_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/serial_script.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,9 +66,9 @@
   }
 }</component>
   <component name="RunManager" selected="Python.serial_script">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="serial_script" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -80,7 +78,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="/usr/bin/python3" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -137,7 +135,8 @@
       <workItem from="1657762753452" duration="4704000" />
       <workItem from="1657824814014" duration="251000" />
       <workItem from="1657825126824" duration="10423000" />
-      <workItem from="1658267160105" duration="35917000" />
+      <workItem from="1658267160105" duration="36308000" />
+      <workItem from="1658530630495" duration="289000" />
     </task>
     <task id="LOCAL-00001" summary="reorganizing">
       <created>1657588515792</created>
@@ -244,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658527979322</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update&#10;new upgraded motors!!&#10;cli added to home screen just in case&#10;debugging first char skip on home">
+      <created>1658530383419</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1658530383419</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,7 +281,8 @@
     <MESSAGE value="added move position to cli commands -- movx and movy" />
     <MESSAGE value="Resolved bounding issue to true span is +/- is 36.67 deg. &#10;Added easter-egg ;)" />
     <MESSAGE value="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update" />
-    <option name="LAST_COMMIT_MESSAGE" value="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update" />
+    <MESSAGE value="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update&#10;new upgraded motors!!&#10;cli added to home screen just in case&#10;debugging first char skip on home" />
+    <option name="LAST_COMMIT_MESSAGE" value="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update&#10;new upgraded motors!!&#10;cli added to home screen just in case&#10;debugging first char skip on home" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

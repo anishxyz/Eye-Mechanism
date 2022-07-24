@@ -113,10 +113,16 @@ void cliLoop() {
             orbit(0, 2);
             oscillate(0, 2, true);
             oscillate(0, 2, false);
+        } else if (str.substring(0, 9).equals("commands")) {
+            Serial.println("Here are commands for the Eye-Mechanism:");
+            Serial.println("\tcent\t\t: centers eyes");
+            Serial.println("\torbi S #####\t: rotates eyes, S = 1,2,3 for speeds slow, med, fast and ##### is number of rotations (max of 2^15 - 1)");
+            Serial.println("\toscx S #####\t: oscillates eyes right-left, S = 1,2,3 for speeds slow, med, fast and ##### is number of oscillations (max of 2^15 - 1)");
+            Serial.println("\toscy S #####\t: oscillates eyes up-down, S = 1,2,3 for speeds slow, med, fast and ##### is number of oscillations (max of 2^15 - 1)");
         } else {
             Serial.print(str);
             Serial.println(" is not a valid command.");
-            Serial.println("To see a valid list of commands, type -help");
+            Serial.println("To see a valid list of commands, type 'commands'");
         }
         //homeScreen();
     }

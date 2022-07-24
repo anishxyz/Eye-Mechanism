@@ -13,12 +13,12 @@ void setup() {
 
     //Serial.println("hello");
 
-    //welcome();
-    //homeScreen();
+    welcome();
+    homeScreen();
 }
 
 
 
 void loop() {
-    cliLoop();
+    //cliLoop();
 }
