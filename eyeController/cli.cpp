@@ -114,11 +114,26 @@ void cliLoop() {
             oscillate(0, 2, true);
             oscillate(0, 2, false);
         } else if (str.substring(0, 9).equals("commands")) {
-            Serial.println("Here are commands for the Eye-Mechanism:");
+            Serial.println("Here are available commands for the Eye-Mechanism:");
+            Serial.println("---------------------------------------------------");
+            Serial.println("Operation Commands");
+            Serial.println("--");
             Serial.println("\tcent\t\t: centers eyes");
             Serial.println("\torbi S #####\t: rotates eyes, S = 1,2,3 for speeds slow, med, fast and ##### is number of rotations (max of 2^15 - 1)");
             Serial.println("\toscx S #####\t: oscillates eyes right-left, S = 1,2,3 for speeds slow, med, fast and ##### is number of oscillations (max of 2^15 - 1)");
             Serial.println("\toscy S #####\t: oscillates eyes up-down, S = 1,2,3 for speeds slow, med, fast and ##### is number of oscillations (max of 2^15 - 1)");
+            Serial.println("\thalt\t\t: stop and terminate oscillate/orbit command");
+            Serial.println("Position Commands");
+            Serial.println("Note: axes range from -36.67 degrees to +36.67 degrees");
+            Serial.println("--");
+            Serial.println("\tsetx #####\t: set x position to desired angle, ##### is decimal, degree of desired position");
+            Serial.println("\tsety #####\t: set y position to desired angle, ##### is decimal, degree of desired position");
+            Serial.println("\tmovx #####\t: move x position by a desired amount (in degrees), ##### is decimal, degree of desired movement");
+            Serial.println("\tmovy #####\t: move y position by a desired amount (in degrees),  ##### is decimal, degree of desired movement");
+            Serial.println("--");
+            Serial.println("\tcommands\t\t: revisit this menu!");
+            Serial.println("In trouble? Bug? email anish.agrawal@mojo.vision, phone 650 653 1313");
+            Serial.println("try the secret command ;) -anish");
         } else {
             Serial.print(str);
             Serial.println(" is not a valid command.");
