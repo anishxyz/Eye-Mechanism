@@ -12,12 +12,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/cli.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/cli.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/eyeController.ino" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/eyeController.ino" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/serial_script.py" afterDir="false" />
-    </list>
+    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="finished command screen help page and documentation" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -137,6 +132,7 @@
       <workItem from="1657825126824" duration="10423000" />
       <workItem from="1658267160105" duration="36308000" />
       <workItem from="1658530630495" duration="289000" />
+      <workItem from="1658643523711" duration="627000" />
     </task>
     <task id="LOCAL-00001" summary="reorganizing">
       <created>1657588515792</created>
@@ -250,7 +246,28 @@
       <option name="project" value="LOCAL" />
       <updated>1658530383419</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update">
+      <created>1658643539367</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1658643539367</updated>
+    </task>
+    <task id="LOCAL-00018" summary="finished command screen help page and documentation">
+      <created>1658644122400</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1658644122400</updated>
+    </task>
+    <task id="LOCAL-00019" summary="finished command screen help page and documentation">
+      <created>1658644144411</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1658644144411</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,9 +297,10 @@
     <MESSAGE value="adjusted relative position functionality to accept negative degrees" />
     <MESSAGE value="added move position to cli commands -- movx and movy" />
     <MESSAGE value="Resolved bounding issue to true span is +/- is 36.67 deg. &#10;Added easter-egg ;)" />
-    <MESSAGE value="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update" />
     <MESSAGE value="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update&#10;new upgraded motors!!&#10;cli added to home screen just in case&#10;debugging first char skip on home" />
-    <option name="LAST_COMMIT_MESSAGE" value="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update&#10;new upgraded motors!!&#10;cli added to home screen just in case&#10;debugging first char skip on home" />
+    <MESSAGE value="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update" />
+    <MESSAGE value="finished command screen help page and documentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished command screen help page and documentation" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
