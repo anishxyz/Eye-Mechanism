@@ -12,7 +12,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="finished command screen help page and documentation" />
+    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="workspace">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -132,7 +134,7 @@
       <workItem from="1657825126824" duration="10423000" />
       <workItem from="1658267160105" duration="36308000" />
       <workItem from="1658530630495" duration="289000" />
-      <workItem from="1658643523711" duration="627000" />
+      <workItem from="1658643523711" duration="1825000" />
     </task>
     <task id="LOCAL-00001" summary="reorganizing">
       <created>1657588515792</created>
@@ -267,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658644144411</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="workspace">
+      <created>1658778645901</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1658778645901</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,7 +309,8 @@
     <MESSAGE value="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update&#10;new upgraded motors!!&#10;cli added to home screen just in case&#10;debugging first char skip on home" />
     <MESSAGE value="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update" />
     <MESSAGE value="finished command screen help page and documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished command screen help page and documentation" />
+    <MESSAGE value="workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
