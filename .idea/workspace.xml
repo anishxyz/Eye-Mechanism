@@ -13,12 +13,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="workspace">
-      <change afterPath="$PROJECT_DIR$/anish.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/cli.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/cli.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eyeController/eyeController.ino" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/eyeController.ino" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial_script.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,9 +66,9 @@
   }
 }</component>
   <component name="RunManager" selected="Python.anish">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="anish" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -125,6 +121,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="PlatformIO.PlatformIO Program" />
       <item itemvalue="Python.anish" />
       <item itemvalue="Python.serial" />
     </list>
@@ -168,6 +165,8 @@
       <workItem from="1658783183809" duration="313000" />
       <workItem from="1658783813792" duration="1805000" />
       <workItem from="1658787573241" duration="993000" />
+      <workItem from="1658788705338" duration="647000" />
+      <workItem from="1658956221562" duration="1000" />
     </task>
     <task id="LOCAL-00001" summary="reorganizing">
       <created>1657588515792</created>
@@ -316,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658783146263</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="adjust storage split across memeory and flash to be more stable">
+      <created>1658871241825</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1658871241825</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +357,8 @@
     <MESSAGE value="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update" />
     <MESSAGE value="finished command screen help page and documentation" />
     <MESSAGE value="workspace" />
-    <option name="LAST_COMMIT_MESSAGE" value="workspace" />
+    <MESSAGE value="adjust storage split across memeory and flash to be more stable" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjust storage split across memeory and flash to be more stable" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

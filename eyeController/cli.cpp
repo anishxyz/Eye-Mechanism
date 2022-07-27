@@ -9,6 +9,7 @@
 #include "servoController.h"
 #include "displayController.h"
 #include "paramManager.h"
+#include "joystick.h"
 
 const unsigned int MAX_MESSAGE_LENGTH = 5;
 String line = "--------------------------------------------------";
@@ -98,6 +99,20 @@ void cliLoop() {
             Serial.print("Positioning....Y Position set to ");
             Serial.print(getPWMDeg(false));
             Serial.println(" degrees");
+        } else if (str.substring(0, 3).equals("joy")) {
+            Serial.println("Joystick Active");
+            while(true) {
+                incrCoord(true, joyX());
+                incrCoord(false, joyY());
+                if (joySW()) {
+                    Serial.println("Joystick Deactivated");
+                    Serial.print("X: ");
+                    Serial.print(getPWMDeg(true));
+                    Serial.print(", Y: ");
+                    Serial.print(getPWMDeg(false));
+                    break;
+                }
+            }
         } else if (str.substring(0, 5).equals("anish")) {
             Serial.println("Made with <3 by Anish Agrawal");
             Serial.println("Dancing...");
