@@ -20,7 +20,7 @@ void homeButton(Adafruit_RGBLCDShield inp) {
     boolean state = true;
 
     while (inp.readButtons() || state) {
-        cliLoop();
+        //cliLoop();
         buttons = inp.readButtons();
         int read = Serial.read();
 
@@ -99,13 +99,13 @@ void rotButton(Adafruit_RGBLCDShield inp) {
         buttons = inp.readButtons();
         if (buttons & BUTTON_UP) {
             incrRot(1);
-            delay(250); //delay so click does not hold onto next screen
+            delay(clickDelay); //delay so click does not hold onto next screen
             rotScreen();
             break;
         }
         if (buttons & BUTTON_DOWN) {
             incrRot(-1);
-            delay(250);
+            delay(clickDelay);
             rotScreen();
             break;
         }
@@ -210,13 +210,13 @@ void numOscButton(Adafruit_RGBLCDShield inp) {
         buttons = inp.readButtons();
         if (buttons & BUTTON_UP) {
             incrOsc(1);
-            delay(250); //delay so click does not hold onto next screen
+            delay(clickDelay); //delay so click does not hold onto next screen
             numOscScreen();
             break;
         }
         if (buttons & BUTTON_DOWN) {
             incrOsc(-1);
-            delay(250);
+            delay(clickDelay);
             numOscScreen();
             break;
         }
