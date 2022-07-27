@@ -109,7 +109,7 @@ void cliLoop() {
                     Serial.print("X: ");
                     Serial.print(getPWMDeg(true));
                     Serial.print(", Y: ");
-                    Serial.print(getPWMDeg(false));
+                    Serial.println(getPWMDeg(false));
                     break;
                 }
             }
