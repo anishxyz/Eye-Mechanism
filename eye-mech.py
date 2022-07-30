@@ -50,6 +50,7 @@ if __name__ == '__main__':
     arduino.connect()
     print("connect success!")
     arduino.write_command('space orbi 3 2', 0.1)
+    # arduino.write_command('halt', 0.1)
     print("write #1 success!")
     print(arduino.read_output())
     print("read #1 success!")
