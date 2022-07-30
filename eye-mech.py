@@ -46,14 +46,16 @@ class eye_mech:
 
 if __name__ == '__main__':
     #arduino = eye_mech('auto-detect')
-    arduino = eye_mech('/dev/cu.usbmodem13301')
+    arduino = eye_mech('/dev/cu.usbmodem13301')  # change port on re-plug
     arduino.connect()
     print("connect success!")
-    arduino.write_command('ooorbi 3 2', 0.5)
-    print("write success!")
+    arduino.write_command('space orbi 3 2', 0.1)
+    print("write #1 success!")
     print(arduino.read_output())
-    arduino.write_command('orbi 3 2', 0.5)
-    print("write 2success!")
+    print("read #1 success!")
+    arduino.write_command('orbi 3 2', 0.1)
+    print("write #2 success!")
     print(arduino.read_output())
-    print("read success!")
+    print("read #2 success!")
     arduino.disconnect()
+    print("disconnect success!")
