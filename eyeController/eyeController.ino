@@ -9,16 +9,16 @@ void setup() {
     displayInit();
     jostickInit();
     //centerAll();
-    //cliInit();
+    cliInit();
 
     //Serial.println("hello");
 
     //welcome();
-    homeScreen();
+    //homeScreen();
 }
 
 
 
 void loop() {
-    //cliLoop();
+    cliLoop();
 }
