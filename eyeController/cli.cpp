@@ -119,6 +119,8 @@ void cliLoop() {
             orbit(0, 2);
             oscillate(0, 2, true);
             oscillate(0, 2, false);
+        } else if (str.substring(0, 6).equals("status")) {
+            cliInit();
         } else if (str.substring(0, 9).equals("commands")) {
             Serial.println();
             Serial.println(F("Here are available commands for the Eye-Mechanism:"));

@@ -9,7 +9,7 @@ void setup() {
     displayInit();
     jostickInit();
     //centerAll();
-    cliInit();
+    //cliInit();
 
     //Serial.println("hello");
 

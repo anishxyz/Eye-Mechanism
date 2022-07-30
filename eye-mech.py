@@ -3,11 +3,13 @@ import serial
 import time
 import traceback
 
-
 class eye_mech:
     def __init__(self, port, baudrate=9600, bytesize=8, parity=serial.PARITY_NONE,
                  timeout=2, stopbits=serial.STOPBITS_TWO, writeTimeout=2, inter_byte_timeout=2 ):
-        self.port = port
+        if port.lower() == "auto-detect":
+            self.port = get_port_name("USB Serial Port")['port']
+        else:
+            self.port = port
         self.baudrate = baudrate
         self.bytesize = bytesize
         self.parity = parity
@@ -43,11 +45,15 @@ class eye_mech:
 
 
 if __name__ == '__main__':
+    #arduino = eye_mech('auto-detect')
     arduino = eye_mech('/dev/cu.usbmodem13301')
     arduino.connect()
     print("connect success!")
     arduino.write_command('ooorbi 3 2', 0.5)
     print("write success!")
+    print(arduino.read_output())
+    arduino.write_command('orbi 3 2', 0.5)
+    print("write 2success!")
     print(arduino.read_output())
     print("read success!")
     arduino.disconnect()

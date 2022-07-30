@@ -12,9 +12,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="temporary removal of port autodetection">
+    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="WORKING PYTHON CLASS SERIAL!!!!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eye-mech.py" beforeDir="false" afterPath="$PROJECT_DIR$/eye-mech.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eyeController/displayController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/displayController.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -383,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659139399804</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="WORKING PYTHON CLASS SERIAL!!!!">
+      <created>1659140023135</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1659140023135</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -423,13 +431,14 @@
     <MESSAGE value="adjust delay for button handling num osc and num rot" />
     <MESSAGE value="new class for eye mech serial" />
     <MESSAGE value="temporary removal of port autodetection" />
-    <option name="LAST_COMMIT_MESSAGE" value="temporary removal of port autodetection" />
+    <MESSAGE value="WORKING PYTHON CLASS SERIAL!!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="WORKING PYTHON CLASS SERIAL!!!!" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Eye_Mechanism$eye_mech.coverage" NAME="eye-mech Coverage Results" MODIFIED="1659139720130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Eye_Mechanism$eye_mech.coverage" NAME="eye-mech Coverage Results" MODIFIED="1659140384464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
