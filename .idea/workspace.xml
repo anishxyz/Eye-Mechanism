@@ -12,12 +12,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="adjust delay for button handling num osc and num rot">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eye-mech.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="temporary removal of port autodetection">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/anish.py" beforeDir="false" afterPath="$PROJECT_DIR$/anish.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eye-mech.py" beforeDir="false" afterPath="$PROJECT_DIR$/eye-mech.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +143,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="PlatformIO.PlatformIO Program" />
       <item itemvalue="Python.eye-mech" />
       <item itemvalue="Python.anish" />
       <item itemvalue="Python.serial" />
@@ -371,7 +369,21 @@
       <option name="project" value="LOCAL" />
       <updated>1658960511405</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="new class for eye mech serial">
+      <created>1659139379589</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1659139379589</updated>
+    </task>
+    <task id="LOCAL-00027" summary="temporary removal of port autodetection">
+      <created>1659139399804</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1659139399804</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -409,13 +421,15 @@
     <MESSAGE value="adjust storage split across memeory and flash to be more stable" />
     <MESSAGE value="joystick function control in CLI mode" />
     <MESSAGE value="adjust delay for button handling num osc and num rot" />
-    <option name="LAST_COMMIT_MESSAGE" value="adjust delay for button handling num osc and num rot" />
+    <MESSAGE value="new class for eye mech serial" />
+    <MESSAGE value="temporary removal of port autodetection" />
+    <option name="LAST_COMMIT_MESSAGE" value="temporary removal of port autodetection" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Eye_Mechanism$eye_mech.coverage" NAME="eye-mech Coverage Results" MODIFIED="1659138815964" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Eye_Mechanism$eye_mech.coverage" NAME="eye-mech Coverage Results" MODIFIED="1659139720130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

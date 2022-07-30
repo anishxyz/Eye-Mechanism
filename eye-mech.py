@@ -5,11 +5,14 @@ import traceback
 
 
 class eye_mech:
-    def __init__(self, port, baudrate=9600, bytesize=8,
-                 timeout=2, writeTimeout=2, inter_byte_timeout=2):
+    def __init__(self, port, baudrate=9600, bytesize=8, parity=serial.PARITY_NONE,
+                 timeout=2, stopbits=serial.STOPBITS_TWO, writeTimeout=2, inter_byte_timeout=2 ):
+        self.port = port
         self.baudrate = baudrate
         self.bytesize = bytesize
+        self.parity = parity
         self.timeout = timeout
+        self.stopbits = stopbits
         self.writeTimeout = writeTimeout
         self.inter_byte_timeout = inter_byte_timeout
 
@@ -35,15 +38,16 @@ class eye_mech:
 
     def read_output(self):
         str_out = self.serialPort.readall()
-        return str_out.decode().split('\n\r')
+        return str_out.decode()  #.split('\n\r') formally present
 
 
 
 if __name__ == '__main__':
-    arduino = eye_mech("auto-detect")
-    #arduino = eye_mech('/dev/cu.usbmodem13301')
+    arduino = eye_mech('/dev/cu.usbmodem13301')
     arduino.connect()
-    arduino.write_command("orbi 3 100", 10)
-    arduino.read_output()
-    print("test")
-    charger.disconnect()
+    print("connect success!")
+    arduino.write_command('ooorbi 3 2', 0.5)
+    print("write success!")
+    print(arduino.read_output())
+    print("read success!")
+    arduino.disconnect()
