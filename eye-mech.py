@@ -7,10 +7,6 @@ import traceback
 class eye_mech:
     def __init__(self, port, baudrate=9600, bytesize=8,
                  timeout=2, writeTimeout=2, inter_byte_timeout=2):
-        if port.lower() == "auto-detect":
-            self.port = get_port_name("USB Serial Port")['port']
-        else:
-            self.port = port
         self.baudrate = baudrate
         self.bytesize = bytesize
         self.timeout = timeout
