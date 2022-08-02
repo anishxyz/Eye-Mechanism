@@ -169,3 +169,13 @@ bool serHalt() {
     }
     return false;
 }
+
+void verbosity(String inp, bool newLine) {
+    if (getVerbose()) {
+        if (newLine) {
+            Serial.println(inp);
+        } else {
+            Serial.print(inp);
+        }
+    }
+}
