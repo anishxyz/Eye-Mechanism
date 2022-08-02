@@ -23,6 +23,7 @@ class eye_mech:
     def __init__(self, port, baudrate=9600, bytesize=8, parity=serial.PARITY_NONE,
                  timeout=2, stopbits=serial.STOPBITS_TWO, writeTimeout=2, inter_byte_timeout=2 ):
         if port.lower() == "auto-detect":
+            # auto-detect does not work on macOS currently :(
             self.port = get_port_name("USB Serial Port")['port']
         else:
             self.port = port
@@ -125,6 +126,8 @@ if __name__ == '__main__':
     arduino.orbit('med', 2)
     arduino.orbit(3, 3)
     arduino.oscillate('y', 'fast', 3)
+    arduino.move('y', 36.67)
+    arduino.setPosition('x', -36.67)
     arduino.center()
     arduino.write_command("anish")
     print(arduino.read_output())

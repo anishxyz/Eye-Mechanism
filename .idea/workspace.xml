@@ -13,6 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="impl verbosity control from cli">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eye-mech.py" beforeDir="false" afterPath="$PROJECT_DIR$/eye-mech.py" afterDir="false" />
     </list>
@@ -471,7 +472,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659474771567</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="added set position and move position methods&#10;commented for improved readability on eye-mech methods">
+      <created>1659475828316</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1659475828316</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -490,7 +498,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="untested position cli commands: setx &amp; sety\&#10;added move relative functionality -- movePosition" />
     <MESSAGE value="adjusted relative position functionality to accept negative degrees" />
     <MESSAGE value="added move position to cli commands -- movx and movy" />
     <MESSAGE value="Resolved bounding issue to true span is +/- is 36.67 deg. &#10;Added easter-egg ;)" />
@@ -515,7 +522,8 @@
     <MESSAGE value="impl verbosity in cli and servoController.cpp&#10;moved verbosity handling to parammanager.cpp" />
     <MESSAGE value="impl verbosity control from cli" />
     <MESSAGE value="impl verbosity control on python side" />
-    <option name="LAST_COMMIT_MESSAGE" value="impl verbosity control on python side" />
+    <MESSAGE value="added set position and move position methods&#10;commented for improved readability on eye-mech methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="added set position and move position methods&#10;commented for improved readability on eye-mech methods" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
