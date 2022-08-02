@@ -3,6 +3,15 @@ import serial
 import time
 import traceback
 
+speeds = {
+        "fast": 3,
+        "med": 2,
+        "slow": 1,
+        3: 3,
+        2: 2,
+        1: 1
+    }
+
 class eye_mech:
     def __init__(self, port, baudrate=9600, bytesize=8, parity=serial.PARITY_NONE,
                  timeout=2, stopbits=serial.STOPBITS_TWO, writeTimeout=2, inter_byte_timeout=2 ):
@@ -22,6 +31,7 @@ class eye_mech:
         self.serialPort = serial.Serial(
             port=self.port, baudrate=self.baudrate, bytesize=self.bytesize, parity=self.parity, timeout=self.timeout,
             stopbits=self.stopbits, writeTimeout=self.writeTimeout, inter_byte_timeout=self.inter_byte_timeout)
+        time.sleep(1.7) # figure out constant
 
     def disconnect(self):
         self.serialPort.close()
@@ -39,24 +49,34 @@ class eye_mech:
             time.sleep(delay)
 
     def read_output(self):
-        str_out = self.serialPort.readall()
-        return str_out.decode()  #.split('\n\r') formally present
+        str_out = self.serialPort.readlines()
+        return str_out.decode()  # .split('\n\r')
 
+    def orbit(self, speed, rotations):
+        cmd = "orbi {} {}\n".format(speeds[speed], rotations)
+        arduino.write_command(cmd, 0.5)
 
+    def oscillate(self, speed, oscillations, axis):
+        cmd = "osc{} {} {}".format(axis, speeds[speed], oscillations)
+        arduino.write_command(cmd, 0.5)
+
+    def center(self):
+        arduino.write_command('cent', 0.5)
 
 if __name__ == '__main__':
     #arduino = eye_mech('auto-detect')
-    arduino = eye_mech('/dev/cu.usbmodem13301')  # change port on re-plug
+    arduino = eye_mech('/dev/cu.usbmodem3134301')  # change port on re-plug
     arduino.connect()
     print("connect success!")
-    arduino.write_command('space orbi 3 2', 0.1)
-    # arduino.write_command('halt', 0.1)
-    print("write #1 success!")
-    print(arduino.read_output())
-    print("read #1 success!")
-    arduino.write_command('orbi 3 2', 0.1)
-    print("write #2 success!")
-    print(arduino.read_output())
-    print("read #2 success!")
+    arduino.orbit('fast', 1)
+    # print(arduino.read_output())
+    arduino.orbit('med', 2)
+    # print(arduino.read_output())
+    arduino.orbit(3, 3)
+    arduino.flush()
+    # print(arduino.read_output())
+    arduino.oscillate('fast', 3, 'y')
+    arduino.center()
+    # print(arduino.read_output())
     arduino.disconnect()
     print("disconnect success!")
