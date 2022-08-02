@@ -12,9 +12,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="cli status command to read all params&#10;cliInit removed from all calls...will bring back when functionality better defined">
+    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="impl verbose getter and setter&#10;impl verbose print method in cli">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/eyeController.ino" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/eyeController.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eyeController/cli.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/cli.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eyeController/cli.h" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/cli.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eyeController/paramManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/paramManager.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,6 +197,7 @@
       <workItem from="1659137755444" duration="843000" />
       <workItem from="1659393055663" duration="2985000" />
       <workItem from="1659396134688" duration="410000" />
+      <workItem from="1659465300532" duration="1567000" />
     </task>
     <task id="LOCAL-00001" summary="reorganizing">
       <created>1657588515792</created>
@@ -434,7 +437,21 @@
       <option name="project" value="LOCAL" />
       <updated>1659398508846</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="impl verbose getter and setter">
+      <created>1659465376790</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1659465376790</updated>
+    </task>
+    <task id="LOCAL-00036" summary="impl verbose getter and setter&#10;impl verbose print method in cli">
+      <created>1659465509500</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1659465509500</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -453,8 +470,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="cli updates" />
-    <MESSAGE value="orbit now support 2^15 rotation max with new structure" />
     <MESSAGE value="oscillate now supports 2^15 rotations with new restructuring" />
     <MESSAGE value="more accurate position movement via float&#10;halt message" />
     <MESSAGE value="untested position cli commands: setx &amp; sety" />
@@ -478,7 +493,9 @@
     <MESSAGE value="WORKING PYTHON CLASS SERIAL!!!!&#10;skipping first 6 char on first run&#10;manual port finding&#10;multithreading for halt?" />
     <MESSAGE value="remove original py script" />
     <MESSAGE value="debugged delays to stability...needs more tuning" />
-    <option name="LAST_COMMIT_MESSAGE" value="debugged delays to stability...needs more tuning" />
+    <MESSAGE value="impl verbose getter and setter" />
+    <MESSAGE value="impl verbose getter and setter&#10;impl verbose print method in cli" />
+    <option name="LAST_COMMIT_MESSAGE" value="impl verbose getter and setter&#10;impl verbose print method in cli" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

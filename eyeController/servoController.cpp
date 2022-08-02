@@ -55,12 +55,13 @@ void setServoPulse(uint8_t n, double pulse) {
 
     pulselength = 1000000;   // 1,000,000 us per second
     pulselength /= SERVO_FREQ;   // Analog servos run at ~60 Hz updates
-    //Serial.print(pulselength); Serial.println(" us per period");
+    //verbosityInt(pulselength, true); verbosity(" us per period", true);
     pulselength /= 4096;  // 12 bits of resolution
-    //Serial.print(pulselength); Serial.println(" us per bit");
+    //verbosity(pulselength, true); verbosity(" us per bit", true);
     pulse *= 1000000;  // convert input seconds to us
     pulse /= pulselength;
-    //Serial.println(pulse);
+    //verbosityInt
+    //(pulse, true);
     pwm.setPWM(n, 0, pulse);
 }
 
@@ -69,7 +70,7 @@ void centerAll() {
     for(int i = 0; i < 6; i++) {
         pwm.setPWM(i, 0, servoMid);
     }
-    Serial.println("All axes centered.");
+    verbosity("All axes centered.", true);
     pwmX = servoMid;
     pwmY = servoMid;
 }
@@ -137,12 +138,12 @@ void orbit(int ms, int rotations) {
 
             if (haltCt == 350) {
                 if (checkHalt()) {
-                    Serial.println("Halted.");
+                    verbosity("Halted.", true);
                     centerAll();
                     return;
                 }
                 if (serHalt()) {
-                    Serial.println("Halted.");
+                    verbosity("Halted.", true);
                     centerAll();
                     homeScreen();
                     return;
@@ -161,11 +162,11 @@ void orbit(int ms, int rotations) {
 
         //used to update display for curr rotation number
         updateOrbitRuntime(i);
-        Serial.print(i);
-        Serial.print(" / ");
-        Serial.println(rotations);
+        verbosityInt(i, false);
+        verbosity(" / ", false);
+        verbosityInt(rotations, true);
     }
-    Serial.println("Orbit Complete.");
+    verbosity("Orbit Complete.", true);
 }
 
 void oscillate(int ms, int oscillations, boolean input) {
@@ -223,12 +224,12 @@ void oscillate(int ms, int oscillations, boolean input) {
 
             if (haltCt == 350) {
                 if (checkHalt() || serHalt()) {
-                    Serial.println("Halted.");
+                    verbosity("Halted.", true);
                     centerAll();
                     return;
                 }
                 if (serHalt()) {
-                    Serial.println("Halted.");
+                    verbosity("Halted.", true);
                     centerAll();
                     homeScreen();
                     return;
@@ -250,11 +251,11 @@ void oscillate(int ms, int oscillations, boolean input) {
         }
         //used to update display for curr rotation number
         updateOscRuntime(i);
-        Serial.print(i);
-        Serial.print(" / ");
-        Serial.println(oscillations);
+        verbosityInt(i, false);
+        verbosity(" / ", false);
+        verbosityInt(oscillations, true);
     }
-    Serial.println("Oscillate Complete.");
+    verbosity("Oscillate Complete.", true);
 }
 
 //deprecated in favor of oscillate

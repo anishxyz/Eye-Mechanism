@@ -3,6 +3,7 @@
 //
 
 #include <Wire.h>
+#include <Adafruit_PWMServoDriver.h>
 
 int rotations = 5;
 int rotms = 1;
@@ -30,6 +31,36 @@ void setVerbose(bool inp) {
 
 bool getVerbose() {
     return verbose;
+}
+
+void verbosity(String inp, bool newLine) {
+    if (getVerbose()) {
+        if (newLine) {
+            Serial.println(inp);
+        } else {
+            Serial.print(inp);
+        }
+    }
+}
+
+void verbosityInt(int inp, bool newLine) {
+    if (getVerbose()) {
+        if (newLine) {
+            Serial.println(inp);
+        } else {
+            Serial.print(inp);
+        }
+    }
+}
+
+void verbosityFloat(float inp, bool newLine) {
+    if (getVerbose()) {
+        if (newLine) {
+            Serial.println(inp);
+        } else {
+            Serial.print(inp);
+        }
+    }
 }
 
 void incrRot(int inp) {

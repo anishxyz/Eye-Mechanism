@@ -15,29 +15,29 @@ const unsigned int MAX_MESSAGE_LENGTH = 5;
 String line = "--------------------------------------------------";
 
 void cliInit() {
-    Serial.println();
-    Serial.println(line);
-    Serial.println("Eye Mechanism CLI");
-    Serial.println(line);
-    Serial.println("--Orbit");
-    Serial.print("\t Speed: ");
-    Serial.println(getRotSpeedLvl());
-    Serial.print("\t Rotations: ");
-    Serial.println(getRot());
-    Serial.println("--Oscillate");
-    Serial.print("\t Speed: ");
-    Serial.println(getOscSpeedLvl());
-    Serial.print("\t Oscillations: ");
-    Serial.println(getOsc());
-    Serial.print("\t Direction: ");
-    Serial.println(getOscDirStr());
-    Serial.println("--Position");
-    Serial.print("\t X-Degrees: ");
-    Serial.println(getPWMDeg(true));
-    Serial.print("\t Y-Degrees: ");
-    Serial.println(getPWMDeg(false));
-    Serial.println(line);
-    Serial.println();
+    verbosity("", true);
+    verbosity(line, true);
+    verbosity("Eye Mechanism CLI", true);
+    verbosity(line, true);
+    verbosity("--Orbit", true);
+    verbosity("\t Speed: ", false);
+    verbosity(getRotSpeedLvl(), true);
+    verbosity("\t Rotations: ", false);
+    verbosityInt(getRot(), true);
+    verbosity("--Oscillate", true);
+    verbosity("\t Speed: ", false);
+    verbosity(getOscSpeedLvl(), true);
+    verbosity("\t Oscillations: ", false);
+    verbosityInt(getOsc(), true);
+    verbosity("\t Direction: ", false);
+    verbosity(getOscDirStr(), true);
+    verbosity("--Position", true);
+    verbosity("\t X-Degrees: ", false);
+    verbosityFloat(getPWMDeg(true), true);
+    verbosity("\t Y-Degrees: ", false);
+    verbosityFloat(getPWMDeg(false), true);
+    verbosity(line, true);
+    verbosity("", true);
 }
 
 void cliLoop() {
@@ -55,7 +55,7 @@ void cliLoop() {
             int rot = str.substring(7, 12).toInt();
             setRotSpd(speed);
             setRot(rot);
-            Serial.println("Orbiting... | Speed: " + getRotSpeedLvl() + " | Rotations: " + getRot());
+            verbosity("Orbiting... | Speed: " + getRotSpeedLvl() + " | Rotations: " + getRot(), true);
             orbit(getRotSpd(), getRot());
         } else if (str.substring(0, 5).equals("oscx ")) {
             int speed = str.substring(5, 6).toInt();
@@ -63,8 +63,8 @@ void cliLoop() {
             setOscDir(true);
             setOscSpd(speed);
             setOsc(osc);
-            Serial.println("Oscillating... | Speed: " + getOscSpeedLvl() + " | Oscillations: " + getOsc()
-                           + " | Direction: " + getOscDirStr());
+            verbosity("Oscillating... | Speed: " + getOscSpeedLvl() + " | Oscillations: " + getOsc()
+                           + " | Direction: " + getOscDirStr(), true);
             oscillate(getOscSpd(), getOsc(), true);
         } else if (str.substring(0, 5).equals("oscy ")) {
             int speed = str.substring(5, 6).toInt();
@@ -72,86 +72,86 @@ void cliLoop() {
             setOscDir(false);
             setOscSpd(speed);
             setOsc(osc);
-            Serial.println("Oscillating... | Speed: " + getOscSpeedLvl() + " | Oscillations: " + getOsc()
-                           + " | Direction: " + getOscDirStr());
+            verbosity("Oscillating... | Speed: " + getOscSpeedLvl() + " | Oscillations: " + getOsc()
+                           + " | Direction: " + getOscDirStr(), true);
             oscillate(getOscSpd(), getOsc(), false);
         } else if (str.substring(0, 5).equals("setx ")) {
             float deg = str.substring(5, 10).toFloat();
             setPosition(deg, true);
-            Serial.print("Positioning....X Position set to ");
-            Serial.print(getPWMDeg(true));
-            Serial.println(" degrees");
+            verbosity("Positioning....X Position set to ", false);
+            verbosityFloat(getPWMDeg(true), false);
+            verbosity(" degrees", true);
         } else if (str.substring(0, 5).equals("sety ")) {
             float deg = str.substring(5, 10).toFloat();
             setPosition(deg, false);
-            Serial.print("Positioning....Y Position set to ");
-            Serial.print(getPWMDeg(false));
-            Serial.println(" degrees");
+            verbosity("Positioning....Y Position set to ", false);
+            verbosityFloat(getPWMDeg(false), false);
+            verbosity(" degrees", true);
         } else if (str.substring(0, 5).equals("movx ")) {
             float deg = str.substring(5, 10).toFloat();
             movePosition(deg, true);
-            Serial.print("Positioning....X Position set to ");
-            Serial.print(getPWMDeg(true));
-            Serial.println(" degrees");
+            verbosity("Positioning....X Position set to ", false);
+            verbosityFloat(getPWMDeg(true), false);
+            verbosity(" degrees", true);
         } else if (str.substring(0, 5).equals("movy ")) {
             float deg = str.substring(5, 10).toFloat();
             movePosition(deg, false);
-            Serial.print("Positioning....Y Position set to ");
-            Serial.print(getPWMDeg(false));
-            Serial.println(" degrees");
+            verbosity("Positioning....Y Position set to ", false);
+            verbosityFloat(getPWMDeg(false), false);
+            verbosity(" degrees", true);
         } else if (str.substring(0, 3).equals("joy")) {
-            Serial.println("Joystick Active");
+            verbosity("Joystick Active", true);
             while(true) {
                 incrCoord(true, joyX());
                 incrCoord(false, joyY());
                 if (joySW()) {
-                    Serial.println("Joystick Deactivated");
-                    Serial.print("X: ");
-                    Serial.print(getPWMDeg(true));
-                    Serial.print(", Y: ");
-                    Serial.println(getPWMDeg(false));
+                    verbosity("Joystick Deactivated", true);
+                    verbosity("X: ", false);
+                    verbosityFloat(getPWMDeg(true), false);
+                    verbosity(", Y: ", false);
+                    verbosityFloat(getPWMDeg(false), true);
                     break;
                 }
             }
         } else if (str.substring(0, 5).equals("anish")) {
-            Serial.println("Made with <3 by Anish Agrawal");
-            Serial.println("Dancing...");
+            verbosity("Made with <3 by Anish Agrawal", true);
+            verbosity("Dancing...", true);
             orbit(0, 2);
             oscillate(0, 2, true);
             oscillate(0, 2, false);
         } else if (str.substring(0, 6).equals("status")) {
             cliInit();
         } else if (str.substring(0, 9).equals("commands")) {
-            Serial.println();
-            Serial.println(F("Here are available commands for the Eye-Mechanism:"));
-            Serial.println(line);
-            Serial.println();
-            Serial.println("Operation Commands");
-            Serial.println("--");
-            Serial.println(F("\tcent\t\t: centers eyes"));
-            Serial.println(F("\torbi S #####\t: rotates eyes, S = 1,2,3 for speeds slow, med, fast and ##### is number of rotations (max of 2^15 - 1)"));
-            Serial.println(F("\toscx S #####\t: oscillates eyes right-left, S = 1,2,3 for speeds slow, med, fast and ##### is number of oscillations (max of 2^15 - 1)"));
-            Serial.println(F("\toscy S #####\t: oscillates eyes up-down, S = 1,2,3 for speeds slow, med, fast and ##### is number of oscillations (max of 2^15 - 1)"));
-            Serial.println(F("\thalt\t\t: stop and terminate oscillate/orbit command"));
-            Serial.println();
-            Serial.println("Position Commands");
-            Serial.println("Note: axes range from -36.67 degrees to +36.67 degrees");
-            Serial.println("--");
-            Serial.println(F("\tsetx #####\t: set x position to desired angle, ##### is decimal, degree of desired position"));
-            Serial.println(F("\tsety #####\t: set y position to desired angle, ##### is decimal, degree of desired position"));
-            Serial.println(F("\tmovx #####\t: move x position by a desired amount (in degrees), ##### is decimal, degree of desired movement"));
-            Serial.println(F("\tmovy #####\t: move y position by a desired amount (in degrees),  ##### is decimal, degree of desired movement"));
-            Serial.println();
-            Serial.println("Other Commands");
-            Serial.println("--");
-            Serial.println(F("\tcommands\t: revisit this menu!"));
-            Serial.println();
-            Serial.println(F("In trouble? Bug? email anish.agrawal@mojo.vision, phone 650 653 1313"));
-            Serial.println("try the secret command ;) -anish");
+            verbosity("", true);
+            verbosity(F("Here are available commands for the Eye-Mechanism:"), true);
+            verbosity(line, true);
+            verbosity("", true);
+            verbosity("Operation Commands", true);
+            verbosity("--", true);
+            verbosity(F("\tcent\t\t: centers eyes"), true);
+            verbosity(F("\torbi S #####\t: rotates eyes, S = 1,2,3 for speeds slow, med, fast and ##### is number of rotations (max of 2^15 - 1)"), true);
+            verbosity(F("\toscx S #####\t: oscillates eyes right-left, S = 1,2,3 for speeds slow, med, fast and ##### is number of oscillations (max of 2^15 - 1)"), true);
+            verbosity(F("\toscy S #####\t: oscillates eyes up-down, S = 1,2,3 for speeds slow, med, fast and ##### is number of oscillations (max of 2^15 - 1)"), true);
+            verbosity(F("\thalt\t\t: stop and terminate oscillate/orbit command"), true);
+            verbosity("", true);
+            verbosity("Position Commands", true);
+            verbosity("Note: axes range from -36.67 degrees to +36.67 degrees", true);
+            verbosity("--", true);
+            verbosity(F("\tsetx #####\t: set x position to desired angle, ##### is decimal, degree of desired position"), true);
+            verbosity(F("\tsety #####\t: set y position to desired angle, ##### is decimal, degree of desired position"), true);
+            verbosity(F("\tmovx #####\t: move x position by a desired amount (in degrees), ##### is decimal, degree of desired movement"), true);
+            verbosity(F("\tmovy #####\t: move y position by a desired amount (in degrees),  ##### is decimal, degree of desired movement"), true);
+            verbosity("", true);
+            verbosity("Other Commands", true);
+            verbosity("--", true);
+            verbosity(F("\tcommands\t: revisit this menu!"), true);
+            verbosity("", true);
+            verbosity(F("In trouble? Bug? email anish.agrawal@mojo.vision, phone 650 653 1313"), true);
+            verbosity("try the secret command ;) -anish", true);
         } else {
-            Serial.print(str);
-            Serial.println(" is not a valid command.");
-            Serial.println(F("To see a valid list of commands, type 'commands'"));
+            verbosity(str, false);
+            verbosity(" is not a valid command.", true);
+            verbosity(F("To see a valid list of commands, type 'commands'"), true);
         }
         //homeScreen();
     }
@@ -170,12 +170,3 @@ bool serHalt() {
     return false;
 }
 
-void verbosity(String inp, bool newLine) {
-    if (getVerbose()) {
-        if (newLine) {
-            Serial.println(inp);
-        } else {
-            Serial.print(inp);
-        }
-    }
-}

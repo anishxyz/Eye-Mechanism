@@ -17,6 +17,16 @@ bool getOscDir();
 
 void setOscDir(bool inp);
 
+bool getVerbose();
+
+void setVerbose(bool inp);
+
+void verbosity(String inp, bool newLine);
+
+void verbosityInt(int inp, bool newLine);
+
+void verbosityFloat(float inp, bool newLine);
+
 void togOscDir();
 
 int getRot();
