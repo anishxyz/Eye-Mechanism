@@ -61,20 +61,60 @@ class eye_mech:
         str_out = self.serialPort.readall()
         return str_out.decode()  # .split('\n\r')
 
+
     def orbit(self, speed, rotations):
+        """
+        Rotate eye-mech in circular motion clock-wise
+        :param speed: 'fast', 'med', or 'slow' or 3, 2, 1, respectively
+        :param rotations: number of rotations
+        """
         cmd = "orbi {} {}".format(speeds[speed], rotations)
         arduino.write_command(cmd)
 
-    def oscillate(self, speed, oscillations, axis):
+    def oscillate(self, axis, speed, oscillations):
+        """
+        Oscillates eye-mech along given axis
+        :param axis: 'x' for horizontal or 'y' for vertical
+        :param speed: 'fast', 'med', or 'slow' or 3, 2, 1, respectively
+        :param oscillations: number of oscillations
+        """
         cmd = "osc{} {} {}".format(axis, speeds[speed], oscillations)
         arduino.write_command(cmd)
 
     def center(self):
+        """
+        Center eye-mech
+        """
         arduino.write_command('cent')
 
     def verbosity(self, tog):
+        """
+        Enable/Disable serial output from eye-mech
+        Enabling verbosity enables serial output
+        Disabling verbosity disables serial output
+        :param tog: 'on' or 'off', 1 or 0 respectively
+        """
         cmd = "verb {}".format(verbosity[tog])
         arduino.write_command(cmd)
+
+    def setPosition(self, axis, position):
+        """
+        Set the eye-mech to a specific position
+        :param axis: 'x' for horizontal or 'y' for vertical
+        :param position: coordinate from -36 to +36 degrees
+        """
+        cmd = "set{} {}".format(axis, position)
+        arduino.write_command(cmd)
+
+    def move(self, axis, position):
+        """
+        Move the eye-mech relative to current position position
+        :param axis: 'x' for horizontal or 'y' for vertical
+        :param position: coordinate from -36 to +36 degrees
+        """
+        cmd = "mov{} {}".format(axis, position)
+        arduino.write_command(cmd)
+
 
 if __name__ == '__main__':
     #arduino = eye_mech('auto-detect')
@@ -84,7 +124,7 @@ if __name__ == '__main__':
     arduino.orbit('fast', 1)
     arduino.orbit('med', 2)
     arduino.orbit(3, 3)
-    arduino.oscillate('fast', 3, 'y')
+    arduino.oscillate('y', 'fast', 3)
     arduino.center()
     arduino.write_command("anish")
     print(arduino.read_output())
