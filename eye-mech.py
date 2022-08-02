@@ -12,6 +12,13 @@ speeds = {
         1: 1
     }
 
+verbosity = {
+        "on": 1,
+        "off": 0,
+        0: 0,
+        1: 1
+    }
+
 class eye_mech:
     def __init__(self, port, baudrate=9600, bytesize=8, parity=serial.PARITY_NONE,
                  timeout=2, stopbits=serial.STOPBITS_TWO, writeTimeout=2, inter_byte_timeout=2 ):
@@ -31,7 +38,8 @@ class eye_mech:
         self.serialPort = serial.Serial(
             port=self.port, baudrate=self.baudrate, bytesize=self.bytesize, parity=self.parity, timeout=self.timeout,
             stopbits=self.stopbits, writeTimeout=self.writeTimeout, inter_byte_timeout=self.inter_byte_timeout)
-        time.sleep(1.7) # figure out constant
+        time.sleep(3) # figure out constant
+        self.verbosity("off")
 
     def disconnect(self):
         self.serialPort.close()
@@ -43,25 +51,30 @@ class eye_mech:
         self.serialPort.flushOutput()
         self.serialPort.flushInput()
 
-    def write_command(self, cmd, delay):
+    def write_command(self, cmd):
+        cmd += "\n"
         for char in cmd:
             self.serialPort.write(char.encode('utf-8'))
-            time.sleep(delay)
+            time.sleep(0.5)
 
     def read_output(self):
-        str_out = self.serialPort.readlines()
+        str_out = self.serialPort.readall()
         return str_out.decode()  # .split('\n\r')
 
     def orbit(self, speed, rotations):
-        cmd = "orbi {} {}\n".format(speeds[speed], rotations)
-        arduino.write_command(cmd, 0.5)
+        cmd = "orbi {} {}".format(speeds[speed], rotations)
+        arduino.write_command(cmd)
 
     def oscillate(self, speed, oscillations, axis):
         cmd = "osc{} {} {}".format(axis, speeds[speed], oscillations)
-        arduino.write_command(cmd, 0.5)
+        arduino.write_command(cmd)
 
     def center(self):
-        arduino.write_command('cent', 0.5)
+        arduino.write_command('cent')
+
+    def verbosity(self, tog):
+        cmd = "verb {}".format(verbosity[tog])
+        arduino.write_command(cmd)
 
 if __name__ == '__main__':
     #arduino = eye_mech('auto-detect')
@@ -69,14 +82,11 @@ if __name__ == '__main__':
     arduino.connect()
     print("connect success!")
     arduino.orbit('fast', 1)
-    # print(arduino.read_output())
     arduino.orbit('med', 2)
-    # print(arduino.read_output())
     arduino.orbit(3, 3)
-    arduino.flush()
-    # print(arduino.read_output())
     arduino.oscillate('fast', 3, 'y')
     arduino.center()
-    # print(arduino.read_output())
+    arduino.write_command("anish")
+    print(arduino.read_output())
     arduino.disconnect()
     print("disconnect success!")
