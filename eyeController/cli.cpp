@@ -121,6 +121,14 @@ void cliLoop() {
             oscillate(0, 2, false);
         } else if (str.substring(0, 6).equals("status")) {
             cliInit();
+        } else if (str.substring(0, 5).equals("verb ")) {
+            int tog = str.substring(5, 6).toInt();
+            if (tog == 1) {
+                setVerbose(true);
+            }
+            if (tog == 0) {
+                setVerbose(false);
+            }
         } else if (str.substring(0, 9).equals("commands")) {
             verbosity("", true);
             verbosity(F("Here are available commands for the Eye-Mechanism:"), true);

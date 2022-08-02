@@ -12,12 +12,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="impl verbose getter and setter&#10;impl verbose print method in cli">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/cli.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/cli.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/cli.h" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/cli.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eyeController/paramManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/paramManager.h" afterDir="false" />
-    </list>
+    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="impl verbosity in cli and servoController.cpp&#10;moved verbosity handling to parammanager.cpp" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -197,7 +192,7 @@
       <workItem from="1659137755444" duration="843000" />
       <workItem from="1659393055663" duration="2985000" />
       <workItem from="1659396134688" duration="410000" />
-      <workItem from="1659465300532" duration="1567000" />
+      <workItem from="1659465300532" duration="2678000" />
     </task>
     <task id="LOCAL-00001" summary="reorganizing">
       <created>1657588515792</created>
@@ -451,7 +446,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659465509500</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="impl verbosity in cli and servoController.cpp&#10;moved verbosity handling to parammanager.cpp">
+      <created>1659468432018</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1659468432018</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -470,7 +472,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="oscillate now supports 2^15 rotations with new restructuring" />
     <MESSAGE value="more accurate position movement via float&#10;halt message" />
     <MESSAGE value="untested position cli commands: setx &amp; sety" />
     <MESSAGE value="untested position cli commands: setx &amp; sety\&#10;added move relative functionality -- movePosition" />
@@ -495,7 +496,8 @@
     <MESSAGE value="debugged delays to stability...needs more tuning" />
     <MESSAGE value="impl verbose getter and setter" />
     <MESSAGE value="impl verbose getter and setter&#10;impl verbose print method in cli" />
-    <option name="LAST_COMMIT_MESSAGE" value="impl verbose getter and setter&#10;impl verbose print method in cli" />
+    <MESSAGE value="impl verbosity in cli and servoController.cpp&#10;moved verbosity handling to parammanager.cpp" />
+    <option name="LAST_COMMIT_MESSAGE" value="impl verbosity in cli and servoController.cpp&#10;moved verbosity handling to parammanager.cpp" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
