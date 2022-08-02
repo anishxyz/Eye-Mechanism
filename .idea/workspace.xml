@@ -12,7 +12,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="impl verbosity in cli and servoController.cpp&#10;moved verbosity handling to parammanager.cpp" />
+    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="impl verbosity control on python side">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eyeController/cli.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/cli.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eyeController/displayController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/displayController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eyeController/eyeController.ino" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/eyeController.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eyeController/servoController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/servoController.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +65,7 @@
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/anishagrawal/Desktop/Development/Eye-Mechanism&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;
   }
 }</component>
   <component name="RunManager" selected="Python.eye-mech">
@@ -140,7 +146,6 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="PlatformIO.PlatformIO Program" />
       <item itemvalue="Python.eye-mech" />
       <item itemvalue="Python.anish" />
       <item itemvalue="Python.serial" />
@@ -192,7 +197,8 @@
       <workItem from="1659137755444" duration="843000" />
       <workItem from="1659393055663" duration="2985000" />
       <workItem from="1659396134688" duration="410000" />
-      <workItem from="1659465300532" duration="2678000" />
+      <workItem from="1659465300532" duration="4485000" />
+      <workItem from="1659471228279" duration="309000" />
     </task>
     <task id="LOCAL-00001" summary="reorganizing">
       <created>1657588515792</created>
@@ -453,7 +459,21 @@
       <option name="project" value="LOCAL" />
       <updated>1659468432018</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="impl verbosity control from cli">
+      <created>1659468652690</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1659468652690</updated>
+    </task>
+    <task id="LOCAL-00039" summary="impl verbosity control on python side">
+      <created>1659474771567</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1659474771567</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -472,8 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="more accurate position movement via float&#10;halt message" />
-    <MESSAGE value="untested position cli commands: setx &amp; sety" />
     <MESSAGE value="untested position cli commands: setx &amp; sety\&#10;added move relative functionality -- movePosition" />
     <MESSAGE value="adjusted relative position functionality to accept negative degrees" />
     <MESSAGE value="added move position to cli commands -- movx and movy" />
@@ -497,10 +515,15 @@
     <MESSAGE value="impl verbose getter and setter" />
     <MESSAGE value="impl verbose getter and setter&#10;impl verbose print method in cli" />
     <MESSAGE value="impl verbosity in cli and servoController.cpp&#10;moved verbosity handling to parammanager.cpp" />
-    <option name="LAST_COMMIT_MESSAGE" value="impl verbosity in cli and servoController.cpp&#10;moved verbosity handling to parammanager.cpp" />
+    <MESSAGE value="impl verbosity control from cli" />
+    <MESSAGE value="impl verbosity control on python side" />
+    <option name="LAST_COMMIT_MESSAGE" value="impl verbosity control on python side" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Eye_Mechanism$eye_mech.coverage" NAME="eye-mech Coverage Results" MODIFIED="1659473041647" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

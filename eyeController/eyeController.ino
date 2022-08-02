@@ -10,12 +10,12 @@ void setup() {
     jostickInit();
     //cliInit();
 
-    welcome();
-    homeScreen();
+    //welcome();
+    //homeScreen();
 }
 
 
 
 void loop() {
-    //cliLoop();
+    cliLoop();
 }

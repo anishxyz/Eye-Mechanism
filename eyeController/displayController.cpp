@@ -190,7 +190,7 @@ void homeScreen() {
     lcd.write(byte(2));
     lcd.print(" Pos");
 
-    cliInit();
+    //cliInit();
     homeButton(lcd);
 }
 

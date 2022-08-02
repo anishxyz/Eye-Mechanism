@@ -145,7 +145,7 @@ void orbit(int ms, int rotations) {
                 if (serHalt()) {
                     verbosity("Halted.", true);
                     centerAll();
-                    homeScreen();
+                    //homeScreen();
                     return;
                 }
                 haltCt = 0;
@@ -231,7 +231,7 @@ void oscillate(int ms, int oscillations, boolean input) {
                 if (serHalt()) {
                     verbosity("Halted.", true);
                     centerAll();
-                    homeScreen();
+                    //homeScreen();
                     return;
                 }
                 haltCt = 0;

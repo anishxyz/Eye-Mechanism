@@ -125,9 +125,11 @@ void cliLoop() {
             int tog = str.substring(5, 6).toInt();
             if (tog == 1) {
                 setVerbose(true);
+                Serial.println("verbosity activated.");
             }
             if (tog == 0) {
                 setVerbose(false);
+                //Serial.println("verbosity deactivated.");
             }
         } else if (str.substring(0, 9).equals("commands")) {
             verbosity("", true);
