@@ -22,6 +22,15 @@ int yStep = 4;
 int degreeArr[9] = {-9,-35,-25,-15,0, 15,25,35,45};
 
 bool halt = false;
+bool verbose = true;
+
+void setVerbose(bool inp) {
+    verbose = inp;
+}
+
+bool getVerbose() {
+    return verbose;
+}
 
 void incrRot(int inp) {
     rotations = rotations + inp;

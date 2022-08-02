@@ -8,17 +8,14 @@ void setup() {
     servoInit();
     displayInit();
     jostickInit();
-    //centerAll();
     //cliInit();
 
-    //Serial.println("hello");
-
-    //welcome();
-    //homeScreen();
+    welcome();
+    homeScreen();
 }
 
 
 
 void loop() {
-    cliLoop();
+    //cliLoop();
 }
