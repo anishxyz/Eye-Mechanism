@@ -4,6 +4,7 @@ import time
 import traceback
 import glob
 
+# acceptable speeds for oscillate and orbit commands
 speeds = {
         "fast": 3,
         "med": 2,
@@ -13,6 +14,7 @@ speeds = {
         1: 1
     }
 
+# toggle for verbosity
 verbosity = {
         "on": 1,
         "off": 0,
@@ -26,6 +28,7 @@ class eye_mech:
         if port.lower() == "auto-detect":
             # uncomment for respective OS
             self.port = glob.glob("/dev/tty.usbmodem*")[0]  # for macOS
+            # print(glob.glob("/dev/tty.usbmodem*")) debug auto-detected port on macOS, change index
             # self.port = get_port_name("USB Serial Port")['port'] # for windows
         else:
             self.port = port
@@ -136,13 +139,22 @@ class eye_mech:
         cmd = "mov{} {}".format(axis, position)
         arduino.write_command(cmd)
 
+    def joy(self):
+        """
+        Activate joystick for manual positioning
+        Click joystick to resume programmed commands
+        """
+        cmd = "joy"
+        arduino.write_command(cmd)
+
 
 if __name__ == '__main__':
-    print(glob.glob("/dev/tty.usbmodem*")[0])
+
     arduino = eye_mech('auto-detect')
-    # arduino = eye_mech('/dev/cu.usbmodem3134301')  # change port on re-plug
+    # arduino = eye_mech('/dev/cu.usbmodem3134301')  # manually assign port
     arduino.connect()
     print("connect success!")
+    arduino.joy()
     arduino.orbit('fast', 1)
     arduino.orbit('med', 2)
     arduino.orbit(3, 3)
@@ -150,6 +162,11 @@ if __name__ == '__main__':
     arduino.move('y', 36.67)
     arduino.setPosition('x', -36.67)
     arduino.center()
+    arduino.orbit(3, 1)
+    arduino.orbit(3, 2)
+    arduino.orbit(3, 3)
+    arduino.orbit(3, 4)
+    arduino.orbit(3, 5)
     arduino.write_command("anish")
     print(arduino.read_output())
     arduino.disconnect()
