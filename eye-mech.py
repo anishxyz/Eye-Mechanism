@@ -150,7 +150,7 @@ class eye_mech:
 
 if __name__ == '__main__':
 
-    arduino = eye_mech('auto-detect')
+    arduino = eye_mech('auto-detect')  # auto-detect eye-mech
     # arduino = eye_mech('/dev/cu.usbmodem3134301')  # manually assign port
     arduino.connect()
     print("connect success!")
