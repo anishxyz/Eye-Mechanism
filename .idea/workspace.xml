@@ -12,10 +12,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="impl verbosity control from cli">
+    <list default="true" id="1a6f6843-b286-4f32-b6db-cd050a876a9b" name="Changes" comment="joystick functionality built in!">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eye-mech.py" beforeDir="false" afterPath="$PROJECT_DIR$/eye-mech.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eyeController/eyeController.ino" beforeDir="false" afterPath="$PROJECT_DIR$/eyeController/eyeController.ino" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,9 +68,9 @@
   }
 }</component>
   <component name="RunManager" selected="Python.eye-mech">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="anish" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -198,6 +199,8 @@
       <workItem from="1659396134688" duration="410000" />
       <workItem from="1659465300532" duration="4485000" />
       <workItem from="1659471228279" duration="309000" />
+      <workItem from="1659480248933" duration="608000" />
+      <workItem from="1659568239305" duration="657000" />
     </task>
     <task id="LOCAL-00001" summary="reorganizing">
       <created>1657588515792</created>
@@ -479,7 +482,28 @@
       <option name="project" value="LOCAL" />
       <updated>1659475828316</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="added set position and move position methods&#10;commented for improved readability on eye-mech methods">
+      <created>1659476142397</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1659476142397</updated>
+    </task>
+    <task id="LOCAL-00042" summary="autodetect port on macOS!!!">
+      <created>1659567182536</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1659567182536</updated>
+    </task>
+    <task id="LOCAL-00043" summary="joystick functionality built in!">
+      <created>1659567812575</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1659567812575</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -498,8 +522,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="adjusted relative position functionality to accept negative degrees" />
-    <MESSAGE value="added move position to cli commands -- movx and movy" />
     <MESSAGE value="Resolved bounding issue to true span is +/- is 36.67 deg. &#10;Added easter-egg ;)" />
     <MESSAGE value="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update&#10;new upgraded motors!!&#10;cli added to home screen just in case&#10;debugging first char skip on home" />
     <MESSAGE value="functional halt works for osc and orb&#10;debugged serial response to halt&#10;debugged screen update" />
@@ -523,7 +545,9 @@
     <MESSAGE value="impl verbosity control from cli" />
     <MESSAGE value="impl verbosity control on python side" />
     <MESSAGE value="added set position and move position methods&#10;commented for improved readability on eye-mech methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="added set position and move position methods&#10;commented for improved readability on eye-mech methods" />
+    <MESSAGE value="autodetect port on macOS!!!" />
+    <MESSAGE value="joystick functionality built in!" />
+    <option name="LAST_COMMIT_MESSAGE" value="joystick functionality built in!" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

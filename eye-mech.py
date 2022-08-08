@@ -48,7 +48,7 @@ class eye_mech:
             port=self.port, baudrate=self.baudrate, bytesize=self.bytesize, parity=self.parity, timeout=self.timeout,
             stopbits=self.stopbits, writeTimeout=self.writeTimeout, inter_byte_timeout=self.inter_byte_timeout)
         time.sleep(3) # figure out constant
-        self.verbosity("off")
+        self.verbosity("on")
 
     def disconnect(self):
         """
@@ -132,7 +132,7 @@ class eye_mech:
 
     def move(self, axis, position):
         """
-        Move the eye-mech relative to current position position
+        Move the eye-mech relative to current position
         :param axis: 'x' for horizontal or 'y' for vertical
         :param position: coordinate from -36 to +36 degrees
         """
@@ -149,7 +149,6 @@ class eye_mech:
 
 
 if __name__ == '__main__':
-
     arduino = eye_mech('auto-detect')  # auto-detect eye-mech
     # arduino = eye_mech('/dev/cu.usbmodem3134301')  # manually assign port
     arduino.connect()
@@ -165,8 +164,6 @@ if __name__ == '__main__':
     arduino.orbit(3, 1)
     arduino.orbit(3, 2)
     arduino.orbit(3, 3)
-    arduino.orbit(3, 4)
-    arduino.orbit(3, 5)
     arduino.write_command("anish")
     print(arduino.read_output())
     arduino.disconnect()

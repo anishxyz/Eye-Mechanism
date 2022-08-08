@@ -8,14 +8,15 @@ void setup() {
     servoInit();
     displayInit();
     jostickInit();
-    //cliInit();
+    welcome();
+    //cliInit(); // mode to have constant readout for debugging and monitoring over serial
 
-    //welcome();
-    //homeScreen();
+
+    homeScreen(); // enables screen UI and manual input
 }
 
 
 
 void loop() {
-    cliLoop();
+    //cliLoop(); // enables CLI mode to communicate over serial (required for python scripting)
 }
