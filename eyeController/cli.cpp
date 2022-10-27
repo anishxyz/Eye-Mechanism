@@ -1,5 +1,5 @@
 //
-// Created by Anish Agrawal on 7/19/22.
+// Created by Anish Agrawal and Kito Pang on 7/19/22.
 //
 
 #include <Wire.h>
